@@ -17,7 +17,7 @@
    12. \* El conjunto de cadenas de 0 y 1 que tienen la forma $ww$, o sea, algún string repetido.
    13. \* El conjunto de cadenas de 0 y 1 tales que tienen la forma $ww^R$, o sea, un string seguido de su reverso.
    14. \* El conjunto de cadenas de 0 y 1 con la forma $w\stackrel{-}{w}$, donde $w\stackrel{-}{w}$ está formada por $w$ reemplazando todos los 0 por 1 y viceversa.
-   15. \* El conjunto de cadenas de la forma w$1^n$ donde $w$ es una cadena de 0 y 1 de longitud n.
+   15. \* El conjunto de cadenas de la forma $w=1^n$ donde $w$ es una cadena de 0 y 1 de longitud n.
    16. \*\* El conjunto de cadenas de 0 y 1, que comienzan con 1, de forma tal que cuando se interpreten como un entero, ese entero es primo.
    17. \*\* El conjunto de cadenas de la forma $0^{i}1^{j}$ de forma que el máximo común divisor de $i$ y $j$ es 1.
    18. El conjunto de cadenas {4,8,1} que contienen la subcadena 481
