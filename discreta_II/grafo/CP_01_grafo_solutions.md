@@ -84,6 +84,9 @@ Supongamos que existen dos componentes conexas, y de cada una seleccionamos un v
 
 Nótese que si $\Delta$(G) + $\delta(g)\geq n-1$ significa que la suma de los degree de cualquier par de vértices del grafo lo cumple, por tanto, para todos los vértices o están conectados con el vértice $\Delta$(G) o tienen con él un adyacente en común. Por tanto, la mayor de todas las distancias entre un par de vértices será a lo sumo a través de un vértice conectado a $\Delta$(G), o sea, de $v$ a $u$ es necesario pasar por $v'$, luego a $\Delta$(G), luego a $u'$ y finalmente llegar a $u$, lo cual, resulta en un camino de tamaño 4, y este es el caso extremo, por tanto $D(G) \leq 4$
 
+Otra solucion: 
+Como se cumple $\Delta$(G) + $\delta(g)\geq n-1$ y ademas $\delta(g)\geq 1$ restando ambas desigualdades tenemos que $\Delta$(G)$\geq n-2$ por tanto todos $\Delta$(G)$=n-1$ o $\Delta$(G) $=n-2$, en el primer caso el diametro es de tamaño 3 y en el segundo caso solo hay un nodo no adyacente a al de mayor grado por tanto el diametro es de tamaño 4.  
+
 ## Problema 11
 
 > Demuestre que la cantidad de componentes conexas de $G$ es mayor igual que $n - m$
