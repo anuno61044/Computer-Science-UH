@@ -1,6 +1,6 @@
 # Soluciones CP3 Coloreo
 
-## Problema 1
+## Problema 1.1
 
 > Demuestra que $\mathcal{X}(K_n) = n$ para todo $n \in \mathbb{N}$
 
@@ -12,7 +12,17 @@ Supongamos que un clique de $k$ vértices tiene como número cromático $k$, nó
 
 Nótese que $K_n$ es un clique de $n$ vértices, por lo que $\mathcal{X}(K_n) = n$
 
-## Problema 2
+## Problema 1.2
 
-> $\mathcal{X}(C_n) = 2$ si $n$ es par y $\mathcal{X}(C_n) = 3$ si $n$ es impar
+> Demuestra que $\mathcal{X}(C_n) = 2$ si $n$ es par y $\mathcal{X}(C_n) = 3$ si $n$ es impar
+
+La coloración en ambos se obtiene alternando dos colores entre vértices adyacentes, excepto cuando $n$ es impar, ocurriendo que en el último vértice a colorear, el anterior es de un color y el primero coloreado de otro, por lo tanto este debe tener un nuevo color.
+
+## Problema 1.3
+
+> Demuestra que $\mathcal{X}(P_n) = 2$ para todo $n \geq 2$
+
+El coloreo se obtiene alternando de un color a otro con 2 colores.
+
+## Problema 2
 
