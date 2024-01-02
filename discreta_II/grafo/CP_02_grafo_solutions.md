@@ -107,6 +107,17 @@ Nótese que nuestro nuevo grafo puede tener múltiples aristas entre dos vértic
 
 Por tanto, en $G$ no existen vértices con degree impar $\implies G$ es euleriano.
 
+## Problema 11
+
+> Si $G_1$ y $G_2$ son grafos obtenidos de $G$ con $n \geq 3$ agregando iterativamente pares de vértices no adyacentes tales que sus degrees sumen al menos n, entonces $G_1 = G_2$.
+
+Supongamos que:
+
+- $G_1$ es el grafo formado por añadir las aristas $E=\{e_1, e_2, \ldots, e_n\}$
+- $G_2$ es el grafo formado por añadir las aristas $A=\{a_1, a_2, \ldots, a_m\}$
+
+Sabemos que $E,A$ son secuencias válidas de aristas añadidas. Probemos que $A=E$. Sea $a_i$ una arista cualquiera de $A$, se cumple que al añadir las aristas de $E$ en $G_1$, como $A$ es una secuencia válida de aristas, en cualquier momento es necesario para formar la clausura añadir la arista $a_1$, y una vez añadida esta es necesario añadir la arista $a_2$ `and so on` hasta añadir la arista $a_i$. Análogamente se demuestra que si $E$ es una secuencia de aristas válidas para formar la clausura, es necesaro en $G_2$ añadir dichas aristas para formar la clausura.
+
 ## Problema 12
 
 > Si $G$ orden 3 o mayor. Pruebe que $G$ es hamiltoniano si solo si $cl(G)$ también lo es.
@@ -149,9 +160,6 @@ Como $d(u)+d(u)\gt n$ significa que existe $i$ tal que las aristas $(u_i,v)$ y $
 
 $$\cdots$$
 
-## Problema 11
-
-> Si $G_1$ y $G_2$ son grafos obtenidos de $G$ con $n \geq 3$ agregando iterativamente pares de vértices no adyacentes tales que sus degrees sumen al menos n, entonces G1 = G2.
 
 
 ## Problema 13
