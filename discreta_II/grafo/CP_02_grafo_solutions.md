@@ -55,6 +55,18 @@ Si $p$ está emparejado con otro vértice $q \implies q$ es adyacente a $u$ o $v
 
 Por tanto no existen vértices que no pertenezcan al emparejamiento máximo $\implies$ existe al menos un emparejamiento perfecto.
 
+## Problema 7
+
+> Pruebe que un árbol tiene a lo sumo un emparejamiento perfecto.
+
+Nótese que para que exista un emparejamiento perfecto, los vértices hoja (vértices con degree 1) no pueden tener hermanos hoja, o sea, dos vértices con degree 1 no pueden estar conectados al mismo vértice, por el **Teorema de Hall**
+
+Supongamos que tiene 2 emparejamientos perfectos distintos (existe $u$ que en uno está emparejado con $v$ y en otro con $w$). Como son perfectos y teniendo en cuenta el **Lema 1** (al final de la demostración), al eliminar los subgrafos inducidos por las hojas y sus padres en el árbol, eventuamente llegaremos a uno de los 3 nodos $u,v,w$, el cual será hoja en este árbol resultante, y por tanto, estará conectado solo a un nodo, por tanto, su emparejamiento es único, contradicción. Luego, en un árbol existe a lo sumo un emparejamiento máximo.
+
+> **Lema 1**: Si en un árbol existe un emparejamiento perfecto, al eliminar los subgrafos inducidos por los nodos hoja y el nodo adyacente de cada uno, el árbol o bosque resultante seguirá teniendo un emparejamiento perfecto, distinto del anterior solo que no existen las parejas eliminadas. 
+
+Es evidente que los nodos hojas solo pueden estar conectados a un nodo en cualquier emparejamiento perfecto que se haga, y ese es su nodo padre, por tanto, a los nodos padres de las hojas no se les puede emparejar ningún otro nodo del árbol para cualquier emparejamiento perfecto $\implies$ al eliminar los nodos hojas, sus padres y las aristas que inciden sobre ellos, el resto del grafo (no necesariamente conexo) no perdió las aristas que pertenecían al emparejamiento del resto de vértices, por tanto, existe un emparejamiento perfecto de estos vértices igual al original excepto en los vértices eliminados.
+
 ## Problema 8
 
 > $G$ tiene una cadena de Euler si y solo si exactamente 2 nodos son de degree impar.
@@ -73,28 +85,29 @@ Nótese que en el dominó de 9 hay en total 55 fichas, las cuales podemos ver co
 
 Estamos buscando un camino Euleriano, pero como todos los vértices tienen grado 9 es imposible, por lo que, si retiramos 4 aristas, obtendríamos que 8 vértices tendrían grado par, y por tanto, 2 serían impares, lo cual es condición necesaria y suficiente para garantizar que exista un camino euleriano.
 
-$$\cdots$$
-
-## Problema 7
-
-> Pruebe que un árbol tiene a lo sumo un emparejamiento perfecto.
-
-Nótese que para que exista un emparejamiento perfecto, los vértices hoja (vértices con degree 1) no pueden tener hermanos hoja, o sea, dos vértices con degree 1 no pueden estar conectados al mismo vértice, por el **Teorema de Hall**
-
-
-Supongamos que tiene 2 emparejamientos perfectos distintos (existe $u$ que en uno está emparejado con $v$ y en otro con $w$). Como son perfectos y teniendo en cuenta el **Lema 1** (al final de la demostración), al eliminar los subgrafos inducidos por las hojas y sus padres en el árbol, eventuamente llegaremos a uno de los 3 nodos $u,v,w$, el cual será hoja en este árbol resultante, y por tanto, estará conectado solo a un nodo, por tanto, su emparejamiento es único, contradicción. Luego, en un árbol existe a lo sumo un emparejamiento máximo.
-
-> **Lema 1**: Si en un árbol existe un emparejamiento perfecto, al eliminar los subgrafos inducidos por los nodos hoja y el nodo adyacente de cada uno, el árbol o bosque resultante seguirá teniendo un emparejamiento perfecto, distinto del anterior solo que no existen las parejas eliminadas. 
-
-Es evidente que los nodos hojas solo pueden estar conectados a un nodo en cualquier emparejamiento perfecto que se haga, y ese es su nodo padre, por tanto, a los nodos padres de las hojas no se les puede emparejar ningún otro nodo del árbol para cualquier emparejamiento perfecto $\implies$ al eliminar los nodos hojas, sus padres y las aristas que inciden sobre ellos, el resto del grafo (no necesariamente conexo) no perdió las aristas que pertenecían al emparejamiento del resto de vértices, por tanto, existe un emparejamiento perfecto de estos vértices igual al original excepto en los vértices eliminados.
-
 ## Problema 10
 
 > Sea $G$ conexo tal que toda arista está contenida en un número impar de ciclos. Pruebe que $G$ es euleriano.
 
 Para demostrar que $G$ es euleriano basta probar que todos los vértices tienen degree par. 
 
-Supongamos que existe un vértice $u$ con degree impar, luego, sean sus vértices adyacentes $v_1, v_2, \ldots, v_k$ con $k$ impar, y construyamos un grafo $G^*$ con estos vértices tal que, por cada cíclo en $G$ que pase por las aristas $(v_i,u),(u,v_j)$ le agregamos la arista $(v_i,v_j)$ al grafo $G^*$. Nótese que en $G^*$ ocurre que para cada par de vértices pueden haber varias aristas entre ellos, pero como hay una cantidad impar de ciclos que pasan por cada arista tenemos que 
+Supongamos que existe un vértice $u$ con degree impar, luego, sean sus vértices adyacentes $v_1, v_2, \ldots, v_k$ con $k$ impar. 
+
+### `Vía 1`
+
+Construyamos un grafo $G^*$ con estos vértices tal que, por cada cíclo en $G$ que pase por las aristas $(v_i,u),(u,v_j)$ le agregamos la arista $(v_i,v_j)$ al grafo $G^*$. Nótese que en $G^*$ ocurre que para cada par de vértices pueden haber varias aristas entre ellos, y debido a la forma de construir este grafo se cumple que, por cada ciclo que pase por la arista $v_i,u$ se le suma 1 al degree de $v_i$ en $G^*$. Luego, como cada arista tiene una cantidad impar de ciclos en $G$ se cumple que en $G^*$ todos los vértices tienen degree impar, y como hay una cantidad impar de vértices esto es imposible.
+
+Por tanto como $\not \exists \  G^* \implies \not \exists \ u$ vértice con degree par en $G$ y por tanto todos los vértices tienen grado par.
+
+### `Vía 2`
+
+Construyamos un grafo $G^*$ con estos vértices $v_i$ y con $u$, y por cada ciclo que pase por una arista $(v_i,u)$ o $(u,v_i)$ agreguemos esa arista al grafo $G^*$. 
+
+Nótese que nuestro nuevo grafo puede tener múltiples aristas entre dos vértices, y que, si es posible que $u$ en $G$ tenga degree impar y cada arista pertenezca a una cantidad impar de ciclos implica que en $G^*$, como $u$ es adyacente a una cantidad impar de vértices y cada uno le aporta una cantidad impar de aristas, entonces su degree será impar, sin embargo esto no se cumple, ya que, por cada ciclo que pase por una arista $(v_i,u) \implies$ también debe pasar o haber pasado por una arista $(u,v_j)$ y por tanto le suma 2 al degree de $u \implies$ en $G^*$ $u$ tienen degree par.
+
+Por tanto, en $G$ no existen vértices con degree impar $\implies G$ es euleriano.
+
+$$\cdots$$
 
 ## Problema 11
 
