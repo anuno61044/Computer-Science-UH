@@ -107,17 +107,61 @@ Nótese que nuestro nuevo grafo puede tener múltiples aristas entre dos vértic
 
 Por tanto, en $G$ no existen vértices con degree impar $\implies G$ es euleriano.
 
+## Problema 12
+
+> Si $G$ orden 3 o mayor. Pruebe que $G$ es hamiltoniano si solo si $cl(G)$ también lo es.
+
+Si $G$ es hamiltoniano entonces $cl(G)$ también lo es, ya que $\forall v \in V$ se cumple que $deg(v)$ en $G$ es menor o igual que $deg(v)$ en $cl(G)$. Demostremos que si $cl(G)$ entonces $G$ lo es.
+
+Tomemos dos vértices adyacentes $u$ y $v$ en $cl(G)$ (sabemos que es hamiltoniana) que no sean adyacentes en $G$, se cumple que $deg(v)+deg(u) \ge n$, y eliminemos la arista $(u,v)$ del grafo. Producto del **Teorema de Bondy Chvatal** se cumple que el grafo resultante es hamiltoniano.
+
+Haciendo esto por cada par de vértices adyacentes en $cl(G)$ (por lo que dichos vértices cumplen que  $deg(v)+deg(u) \ge n$), se cumple que después de cada operación el grafo resultante será cada vez más parecido a $G$ y será hamiltoniano, hasta obtener $G$ por completo.
+
+## Teorema de Bondy Chvatal
+
+>  Sea $G$ un grafo con $u,v$ dos vértices no adyacentes tales que $deg(u) + deg(v) ≥ n$. Entonces $G$ es hamiltoneano si y solo si $G + (u,v)$ es hamiltoneano.
+
+Si $G$ es hamiltoniano, al agregar una arista seguirá siendo hamiltoniano.
+
+Supongamos que $G + (u,v)$ es hamiltoneano, por tanto existe un ciclo de hamilton, y al eliminar la arista $(u,v)$ se cumple que existe un camino de hamilton $P=\{u=v_1,v_2,\ldots,v_n=v\}$.
+
+Como $deg(u) + deg(v) \ge n$ y la arista $(u,v)$ no existe $\implies$ $u,v$ tienen en $P$ dos vértices en común y se cumple que existen $v_{i-1},v_i$ tal que las aristas $(u,v_i)$ y $(v_{i-1},v)$ existen en el grafo. Supongamos que esto último no ocurre, pero sabemos que $u,v$ tienen en $P$ dos vértices en común, sea $v_s$ uno de ellos, para que no se cumple lo anterior debe ocurrir que los vértices en el camino después de $v_s$ no son adyacentes a $u$ y los anteriores a este no adyacentes a $v$, pero esto no ocurre porque $u,v$ tienen al menos otro vértices en común.
+
+Por tanto, al eliminar la arista $(u,v)$ existe un ciclo en el grafo y es $\{v_1, v_i, \ldots, v_n, v_{i-1}, \ldots, v_2\}$.
+
+## Problema 14
+
+> Pruebe que $K_{n,n+1}$ es no hamiltoniano para todo $n\geq 1$.
+
+Supongamos que el grafo $G = K_{n,n+1}$ es hamiltoniano, y sean $u,v$ dos vértices de conjuntos distintos.
+
+Nótese que si quitamos la arista $(u,v)$ existe en el grafo un camino hamiltoniano $P=\{u=v_1,v_2, \ldots, v_n, \ldots, v_{2n+1}=v \}$ donde los vértices impares se encuentran en un subconjunto y los pares en otro. Sin pérdida de generalidad sea $u \in A_n$ perteneciente al subconjunto con $n$ elementos y $v\in A_{n+1}$. Como $P$ lo comenzamos en $u$ y $|A_n| \lt |A_{n+1}|$ se cumple que es imposible pasar por todos los nodos una sola vez, ya que en cada momento hay que seleccionar un vértice distinto en un subconjunto distinto, y el conjunto por el que empezamos tiene menos vértices que el otro.
+
+## Problema 15
+
+> Sea $G$ un subgrafo abarcador de $K_{n,n}(n\geq 2)$ cuyas particiones son $V_1$ y $V_2$. Sean $u\in V_1$ y $v\in V_2$ tales que $d(u)+d(u)\gt n$. Pruebe que $G$ es hamiltoniano si solo si $G+uv$ también lo es.
+
+Si $G$ es hamiltoniano, al agregar una arista seguirá siendo hamiltoniano.
+
+Supongamos que $G + (u,v)$ es hamiltoneano, por tanto existe un ciclo de hamilton, y al eliminar la arista $(u,v)$ se cumple que existe un camino de hamilton $P=\{u=u_1, v_1, u_2, v_2, \ldots,u_n, v_n=v\}$.
+
+Como $d(u)+d(u)\gt n$ significa que existe $i$ tal que las aristas $(u_i,v)$ y $(u,v_{i+1})$ existen en el grafo. Para demostrar esto tomemos los vértices en el orden de $P$ por parejas $\implies$ son $n-2$ parejas, quitando la primera y la última que es donde se encuentran $u$ y $v$, luego, entre dichos vértices deben seleccionar más de $n-2$ para ser adyacentes a un vértice, luego, por Principio del Palomar se cumple que en una pareja deben existir vértices adyancentes, y por la forma de escoger las parejas se cumple lo que queríamos demostrar. Por último, como las aristas $(u_i,v)$ y $(u,v_{i+1})$ existen en el grafo, teniendo en cuenta el orden de los vértices en $P$ obtenemos el ciclo.
+
 $$\cdots$$
 
 ## Problema 11
 
 > Si $G_1$ y $G_2$ son grafos obtenidos de $G$ con $n \geq 3$ agregando iterativamente pares de vértices no adyacentes tales que sus degrees sumen al menos n, entonces G1 = G2.
 
-## Problema 12
 
-> Si $G$ orden 3 o mayor. Pruebe que $G$ es hamiltoniano si solo si $cl(G)$ también lo es.
+## Problema 13
 
+> Si $G$ es conexo, bipartito y regular de grado $k$ entonces es 2-conexo.
 
+## Problema 16
+
+> Pruebe que el grafo de Petersen es no hamiltoniano.
+> ![grafo de Petersen](image.png)
 
 
 
