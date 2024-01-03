@@ -1,4 +1,4 @@
-# Soluciones Grafo 1
+# Soluciones Grafo 1 (Nociones de Grafo)
 
 ## Problema 1
 
@@ -28,7 +28,7 @@ Análogamente se demuestra que $d[f(v)] \le d[v]$ utilizando el isomorfismo inve
 
 Utilizando la definición de grafos isomorfos, si $u,v \in E_G \implies f(u),f(v) \in E_H$, se puede demostrar que $|E_G| \le |E_H|$ y luego con el isomorfismo inverso que $|E_H| \le |E_G| \implies |E_G| = |E_H|$
 
-## Problema 4
+## Problema 4 (incompleto)
 
 > 4. Demuestre que las siguientes definiciones son equivalentes:
 >     1. $G$ es un grafo acíclico y conexo
@@ -62,8 +62,6 @@ Sea $G$ conexo y $|E| = n-1 \implies$ para todo par de vértices en $G$ se cumpl
 
 $G$ es conexo pero si se suprime una arista cualquiera, deja de serlo $\implies$ es acíclico. Luego, al añadir una arista entre vértices no adyacentes se cumple que existen dos caminos disjuntos entre estos vértices, por tanto, existe un ciclo.
 
-$$\cdots$$
-
 ## Problema 5
 
 > Demuestre que si $C$ es un clique e $I$ es un conjunto independiente, $|C\cap I|\leq 1$.
@@ -71,6 +69,22 @@ $$\cdots$$
 Supongamos que $C$ e $I$ no tienen vértices en común, entonces $|C\cap I|= 0$. Demostremos que si tienen vértices en común debe ser solo 1.
 
 Supongamos que tienen $k$ vértices en común, con $k \gt 1$, luego, como dichos $k$ vértices pertenecen a $C \implies$ están conectados entre si, pero como pertenecen a $I \implies$ no están conectados entre si, contradicción. Por tanto $|C\cap I|\leq 1$
+
+## Problema 7
+
+> Demuestre que $G$ existe una cadena cerrada de Euler si y sólo si todos sus vértices tienen grado par.
+
+Sabemos que:
+
+- una cadena es un camino que no repite vértices
+- una cadena de Euler es una cadena que abarca todas las aristas del grafo
+- una cadena cerrada es una cadena que comienza y termina en el mismo vértice
+
+Supongamos que existe un vértice de grado impar, luego, dicha cadena cerrada de Euler debe comenzar en este vértice porque debe abarcar todas las aristas sin repetición, pero como es cerrada debe terminar en el vértice, sin embargo, como tiene degree impar esto no es posible, contradición.
+
+Supongamos que todos los vértices tienen grado par (y es conexo por supuesto), entonces existe $u,v,w$ tal que $(u,v),(u,w) \in E$. Hagamos inducción en $E$, caso base $n=1$ lo cumple. 
+
+Sea $G'=<V,E'>$ donde $E'=E-\{(u,v),(u,w)\}+(v,w)$, el cual sigue cumpliendo que todos los vértices tienen grado par. Si $G'$ es conexo, nótese que existe por hipótesis de inducción un ciclo euleriano, por lo que basta con eliminar la arista añadida e insertar las aristas eliminadas y el ciclo seguirá existiendo. Si $G'$ no es conexo significa que existen dos componentes conexas y se cumple que $u\in H_u$ y $v,w \in H_{v,w}$, y en cada una de ellas por hipótesis de inducción existe un ciclo euleriano, por lo que, volviendo al grafo anterior, basta con partir de $v$ hasta $u$, recorrer el ciclo en $H_u$, luego ir hacia $w$ por la arista $(u,w)$ y por último recorrer el camino euleriano en $H_{v,w}$ hacia $v$, por tanto, existe un ciclo euleriano.
 
 ## Problema 9
 
@@ -140,6 +154,16 @@ Como los ciclos supusimos que eran impares, entre el nodo $w[i]$ y el nodo $w[j]
 
 $w[0], w[i], \ldots, w[j], w[0]$
 
+## Problema 17
+
+> Demuestre que si $n \geq 9$, entonces $\alpha(G) \geq 4$ o $\omega(G) \geq 3$.
+
+Supongamos que existe en $G$ un vértice $u$ tal que $deg(u) \ge 4$, si alguno de sus adyacentes están conectados tenemos $\omega(G) \ge 3$, de lo contrario tenemos $\alpha(G) \ge 4$. Si lo anterior no pasa $\implies$ en $G^c$ se cumple que $v$ tiene 5 o más vértices conectados
+
+Si en $G^c$ se cumple que $deg(v) \ge 6$ se cumple lo enunciado en el ejercicio 12 con el grafo inducido por estos vértices adyacentes, en caso de haber un conjunto independiente de tamaño 3 $\implies$ en $G$ hay un clique de tamaño 3, de lo contrario, hay un clique de tamaño 3, que junto al nodo al que son adyacentes toma tamaño 4 $\implies$ en $G$ hay un conjunto independiente de tamaño 4.
+
+Nótese que todos los vértices del grafo no pueden ser pares porque hay una cantidad impar de vértices, luego, o existe algún nodo con degree mayor o igual a 4 o en su complemento tiene degree mayor o igual que 6.
+
 ## Problema 18
 
 > Demuestre que si $m \geq \frac{(n-1)*(n-2)}{2} +1$, entonces G es conexo.
@@ -172,23 +196,7 @@ Procedamos por inducción en la cantidad de vértices.
 
 Supongamos que en un grafo de $k$ vertices se cumple, luego, en un grafo de $k+1$, al eliminar un vértice podemos encontrar un subgrafo de este que cumpla la condición, luego, al agregar el vértice removido, lo podemos ubicar en uno de los dos conjuntos de la bipartición, supongamos que este vértice aporta $e$ aristas, luego, tomamos el conjunto que menos vértices adyacentes tenga y lo insertamos ahí, e insertamos también en la bipartición todas las aristas de dicho vértice hacia el otro conjunto, las cuales serán $\ge \frac{e}{2}$ (notemos que en la bipartición se encuentran todos los vértices del grafo para garantizar que se cumpla la condición)
 
-$$........$$
 
-## Problema 7
-
-> Demuestre que $G$ existe una cadena cerrada de Euler si y sólo si todos sus vértices tienen grado par.
-
-Sabemos que:
-
-- una cadena es un camino que no repite vértices
-- una cadena de Euler es una cadena que abarca todas las aristas del grafo
-- una cadena cerrada es una cadena que comienza y termina en el mismo vértice
-
-Supongamos que existe un vértice de grado impar, luego, dicha cadena cerrada de Euler debe comenzar en este vértice porque debe abarcar todas las aristas sin repetición, pero como es cerrada debe terminar en el vértice, sin embargo, como tiene degree impar esto no es posible, contradición.
-
-## Problema 17
-
-> Demuestre que si $n \geq 9$, entonces $\alpha(G) \geq 4$ o $\omega(G) \geq 3$.
 
 
 

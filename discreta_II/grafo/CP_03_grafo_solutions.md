@@ -1,4 +1,4 @@
-# Soluciones CP3 Coloreo
+# Soluciones grafo 3 (Coloreo)
 
 ## Problema 1.1
 
@@ -44,9 +44,11 @@ En caso que sea un ciclo ya probamos que o es 2-coloreable o 3-coloreable.
 
 ## Problema 4.1
 
-> Sea $\mathcal{G}$ un grafo de orden n. Demuestre que: 
-> 
-> $$n \leq \mathcal{X(G)} * \mathcal{X(G^C)} \leq (\frac{n + 1}{2})^2$$
+> Sea $\mathcal{G}$ un grafo de orden n. Demuestre que:
+>
+> $$
+> n \leq \mathcal{X(G)} * \mathcal{X(G^C)} \leq (\frac{n + 1}{2})^2
+> $$
 
 Nota: sea $\alpha(G)$ el mayor número de vértices independientes y $\omega(G)$ la cardinalidad del mayor clique.
 
@@ -54,15 +56,21 @@ Sea $\mathcal{X(G)}=k \implies n=n_1+n_2+\cdots+n_k$ donde $n_i$ representa la c
 
 Sin embargo, el mayor conjunto independiente en el grafo $G$ equivale al mayor clique en el grafo complemento, por lo que, $\alpha(\mathcal{G}) = \omega(\mathcal{G^c})$
 
-$$n \le k \times \omega(\mathcal{G^c})$$
+$$
+n \le k \times \omega(\mathcal{G^c})
+$$
 
 Luego, sabemos que el número cromático de un grafo es mayor o igual que el mayor de todos los cliques contenidos en este, por tanto:
 
-$$n \le k \times \omega(\mathcal{G^c}) \le k \times \mathcal{X(G^c)} =\mathcal{X(G)} \times \mathcal{X(G^c)}$$
+$$
+n \le k \times \omega(\mathcal{G^c}) \le k \times \mathcal{X(G^c)} =\mathcal{X(G)} \times \mathcal{X(G^c)}
+$$
 
 Demostremos ahora que $\mathcal{X(G^c)}+\mathcal{X(G)} \le n+1$. Supongamos lo contrario, entonces, siendo $\mathcal{X(G^c)}=k_1$ y $\mathcal{X(G)}=k_2$ se cumple que:
 
-$$k_1+k_2 \gt n+2$$
+$$
+k_1+k_2 \gt n+2
+$$
 
 Tomemos en cada uno un subgrafo $k_1$ crítico en $\mathcal{G}$ y $k_2$ crítico en $\mathcal{G^c}$, y analicemos que, por propiedad de grafo $k$ crítico se cumple que:
 
@@ -71,25 +79,35 @@ Tomemos en cada uno un subgrafo $k_1$ crítico en $\mathcal{G}$ y $k_2$ crítico
 
 Como $k_1+k_2 \gt n+2$ significa que hay al menos un vértice que cumple con ambas condiciones en $\mathcal{G}$ y $\mathcal{G^c}$, pero sabemos que para todo vértice se cumple que: $deg_{\mathcal{G}}(u)+deg_{\mathcal{G^c}}(u)=n-1$, o sea, la cantidad de vértices adyacentes en el grafo y en su complemento de cualquier vértices abarca a todos los demás vértices, más sin embargo, por el razonamiento anterior se cumple que existe un vértice $v$ tal que en $\mathcal{G}$ ocurre que $deg(v)\ge k_1-1$ y en $\mathcal{G^c}$ que $deg(v)\ge k_2-1$, luego:
 
-$$deg_{\mathcal{G}}(v)+deg_{\mathcal{G^c}}(v) \ge k_1+k_2-2 \gt n+2-2=n$$
+$$
+deg_{\mathcal{G}}(v)+deg_{\mathcal{G^c}}(v) \ge k_1+k_2-2 \gt n+2-2=n
+$$
 
 Contradicción, por tanto $k_1+k_2 \le n+1$. Luego, por media aritmética-media geométrica se cumple que:
 
-$$\sqrt{k_1\times k_2} \le \frac{k_1+k_2}{2} \le \frac{n+1}{2}$$
+$$
+\sqrt{k_1\times k_2} \le \frac{k_1+k_2}{2} \le \frac{n+1}{2}
+$$
 
-$$\implies k_1\times k_2 \le (\frac{n + 1}{2})^2$$
+$$
+\implies k_1\times k_2 \le (\frac{n + 1}{2})^2
+$$
 
-$$\therefore n \leq \mathcal{X(G)} \times \mathcal{X(G^C)} \leq (\frac{n + 1}{2})^2$$
+$$
+\therefore n \leq \mathcal{X(G)} \times \mathcal{X(G^C)} \leq (\frac{n + 1}{2})^2
+$$
 
 ## Problema 4.2
 
-> Sea $\mathcal{G}$ un grafo de orden n. Demuestre que: 
-> 
-> $$2 \sqrt{n} \leq \mathcal{X(G)} + \mathcal{X(G^C)} \leq n + 1$$
+> Sea $\mathcal{G}$ un grafo de orden n. Demuestre que:
+>
+> $$
+> 2 \sqrt{n} \leq \mathcal{X(G)} + \mathcal{X(G^C)} \leq n + 1
+> $$
 
 Sabemos por el ejercicio anterior que $\mathcal{X(G)} + \mathcal{X(G^C)} \leq n + 1$ por lo que bastaría probar que $2 \sqrt{n} \leq \mathcal{X(G)} + \mathcal{X(G^C)}$.
 
-Sin embargo, por las desigualdades anteriores se cumple que: 
+Sin embargo, por las desigualdades anteriores se cumple que:
 
 - $n \leq \mathcal{X(G)} * \mathcal{X(G^C)}$
 - $2\times \sqrt{\mathcal{X(G)} * \mathcal{X(G^C)}} \le\mathcal{X(G)} + \mathcal{X(G^C)}$
@@ -102,17 +120,29 @@ Y uniendo ambas desigualdades obtenemos que $2 \sqrt{n} \leq \mathcal{X(G)} + \m
 
 Agrupemos los vértices por colores. Sea $\mathcal{X(G)} = k$, por tanto, hay $k$ grupos de vértices que no pueden estar conectados entre ellos, sin embargo, cada grupo debe estar conectado con los otros grupos, por tanto, al menos deben haber $\frac{k(k-1)}{2}$ aristas. Si $m$ es la cantidad de aristas de $\mathcal{G}$ se cumple que:
 
-$$\frac{k(k-1)}{2} \le m$$
-$$k(k-1) \le 2m$$
-$$k^2-k-2m \le 0$$
+$$
+\frac{k(k-1)}{2} \le m
+$$
+
+$$
+k(k-1) \le 2m
+$$
+
+$$
+k^2-k-2m \le 0
+$$
 
 Aplicando discriminante $D=b^2-4ac$ se cumple que:
 
-$$D=1+8m$$
+$$
+D=1+8m
+$$
 
 Luego, $k$ puede tomar dos posibles valores, luego, tomando el mayor de ellos, se cumple la desigualdad:
 
-$$k \le \frac{1}{2}(1+\sqrt{1+8m})$$
+$$
+k \le \frac{1}{2}(1+\sqrt{1+8m})
+$$
 
 ## Problema 6
 
@@ -124,17 +154,20 @@ Sabemos del **Problema 4** que $\alpha(\mathcal{G})\times\mathcal{X(G)} \geq n$.
 
 Luego, se cumple que $(n-d) \ge \alpha(\mathcal{G})$, por lo que:
 
-$$(n-d) \times \mathcal{X(G)} \geq n$$
+$$
+(n-d) \times \mathcal{X(G)} \geq n
+$$
 
 ## Problema 8
 
 > Sea $\mathcal{G}$ un grafo donde todo par de ciclos de longitud impar tiene al menos un vértice común. Demuestre que $\mathcal{X(G)} \leq 5$.
 
-Notemos que si tomamos un ciclo de longitud impar y lo quitamos, el grafo que queda no puede tener ciclos de longitud impar, ya que de cada uno retiramos al menos un vértice que tenía en común con el ciclo $\implies$ el grafo resultante es bipartito, por tanto se puede pintar de dos colores. Luego, como ya hemos demostrado, un ciclo impar se puede pintar con 3 colores, por tanto, seleccionando 3 colores distintos a los 2 colores ya escogidos para pintar el grafo obtenemos una coloracion válida de 5 colores.
+Notemos que si tomamos el menor ciclo de longitud impar y lo quitamos, el grafo que queda no puede tener ciclos de longitud impar, ya que de cada uno retiramos al menos un vértice que tenía en común con el ciclo $\implies$ el grafo resultante es bipartito, por tanto se puede pintar de dos colores. Luego, como ya hemos demostrado, ese ciclo impar (el cual no tiene ningún ciclo menor inducido) se puede pintar con 3 colores, por tanto, seleccionando 3 colores distintos a los 2 colores ya escogidos para pintar el grafo obtenemos una coloracion válida de 5 colores.
 
-$$\cdots$$
+$$
+\cdots
+$$
 
 ## Problema 7
 
 > Demuestra que si $d_1$, $d_2$, ... , $d_n$ es la secuencia no creciente de grados de un grafo $\mathcal{G}$ entonces $\mathcal{X(G)} \leq 1 + \max_{1 \leq i \leq n}\{min(d_i, i - 1)\}$.
-

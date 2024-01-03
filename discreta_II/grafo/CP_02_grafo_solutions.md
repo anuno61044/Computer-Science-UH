@@ -1,4 +1,4 @@
-# Soluciones grafo 2
+# Soluciones grafo 2 (Matching, Euler y Hamilton)
 
 ## Problema 1
 
@@ -22,7 +22,7 @@ Por tanto, la cantidad de vértices de degree 3 es $k = \frac{n-2}{2}$.
 
 Sabemos de antemano que contiene al menos un ciclo al insertar la arista $u,v$ (siendo $u$ y $v$ vértices no adyacentes en el árbol) ya que al principio existía solo un camino que unía a $u$ con $v$ y ahora además de ese camino se encuentra la arista añadida. Probemos ahora que no existe ningún otro ciclo.
 
-Supongamos que al añadir la arista $u,v$ se genera al menos otro ciclo (con al menos un vértice distinto al ciclo que ya habíamos analizado), luego, dicho ciclo contendrá la arista $u,v$ y por tanto a los vértices $u$ y $v$, por tanto, existen ahora 3 caminos distintos que conectan a $u$ con $v$ (la arista, el primer camino y el camino contenido en el último ciclo encontrado excluyendo la arista $u,v$), y notemos que entre estos 3 caminos solo 1 contiene a la arista $u,v$ y es precisamente el camino formado por dicha arista, luego, al eliminarla todavía existirán dos caminos que conecten a $u$ con $v$, contradicción porque estamos trabajando en un árbol. 
+Supongamos que al añadir la arista $u,v$ se genera al menos otro ciclo (con al menos un vértice distinto al ciclo que ya habíamos analizado), luego, dicho ciclo contendrá la arista $u,v$ y por tanto a los vértices $u$ y $v$, por tanto, existen ahora 3 caminos distintos que conectan a $u$ con $v$ (la arista, el primer camino y el camino contenido en el último ciclo encontrado excluyendo la arista $u,v$), y notemos que entre estos 3 caminos solo 1 contiene a la arista $u,v$ y es precisamente el camino formado por dicha arista, luego, al eliminarla todavía existirán dos caminos que conecten a $u$ con $v$, contradicción porque estamos trabajando en un árbol.
 
 ## Problema 4
 
@@ -34,7 +34,7 @@ Haciendo $BFS$ a partir de cualquier vértice se le asignan los vértices de dis
 
 > Sea $G$ bipartito y regular de grado $k$, entonces existen $k$ emparejamientos perfectos disjuntos.
 
-Para probar esto basta dado un grafo $G$ bipartito y regular de grado $k$ buscar $k$ emparejamientos perfectos disjuntos. 
+Para probar esto basta dado un grafo $G$ bipartito y regular de grado $k$ buscar $k$ emparejamientos perfectos disjuntos.
 
 Sean los vértices del conjunto $A = \{v_1, v_2, \ldots, v_k\}$ y $B = \{v_{k+1}, v_{k+2}, \ldots, v_{k+k}\}$. Formemos los emparejamientos de la siguiente forma:
 
@@ -49,7 +49,7 @@ Para cada vértice en cualquiera de los dos conjuntos entre todos los $k$ empare
 
 Sea $M$ un emparejamiento máximo y supongamos que no es perfecto. Como $n$ es par significa que existen una cantidad par de nodos que no forman parte de $M$.
 
-Sean $u$ y $v$ dos de los vértices no emparejados, sabemos que $d(v)+d(w)\geq n-1$, por tanto o son adyacentes o tienen al menos un vértice en común entre sus adyacentes. Si son adyacentes podemos emparejarlos y obtendríamos un emparejamiento mayor que el emparejamiento máximo, contradicción. Supongamos ahora que tienen al menos un vértice $p$ en común entre sus adyacentes. 
+Sean $u$ y $v$ dos de los vértices no emparejados, sabemos que $d(v)+d(w)\geq n-1$, por tanto o son adyacentes o tienen al menos un vértice en común entre sus adyacentes. Si son adyacentes podemos emparejarlos y obtendríamos un emparejamiento mayor que el emparejamiento máximo, contradicción. Supongamos ahora que tienen al menos un vértice $p$ en común entre sus adyacentes.
 
 Si $p$ está emparejado con otro vértice $q \implies q$ es adyacente a $u$ o $v$ porque $d(v)+d(w)\geq n-1$, en cualquier caso basta con eliminar el emparejamiento $p,q$ y emparejar a $q$ con el que es adyacente a él entre $u$ y $v$ y emparejar $p$ al otro, luego, tendríamos un emparejamiento mayor que el emparejamiento máximo, contradicción. Si $p$ no está emparejado con ningún otro vértice $\implies$ existe otro vértice $q$ que no pertenece a $M$, el cual, es adyacente a $u$ o $v$, y supongamos sin pérdida de generalidad que es adyacente a $v$, entonces, al emparejar $q,v$ y $p,u$ obtendremos un emparejamiento mayor que emparejamiento máximo, contradicción.
 
@@ -63,7 +63,7 @@ Nótese que para que exista un emparejamiento perfecto, los vértices hoja (vér
 
 Supongamos que tiene 2 emparejamientos perfectos distintos (existe $u$ que en uno está emparejado con $v$ y en otro con $w$). Como son perfectos y teniendo en cuenta el **Lema 1** (al final de la demostración), al eliminar los subgrafos inducidos por las hojas y sus padres en el árbol, eventuamente llegaremos a uno de los 3 nodos $u,v,w$, el cual será hoja en este árbol resultante, y por tanto, estará conectado solo a un nodo, por tanto, su emparejamiento es único, contradicción. Luego, en un árbol existe a lo sumo un emparejamiento máximo.
 
-> **Lema 1**: Si en un árbol existe un emparejamiento perfecto, al eliminar los subgrafos inducidos por los nodos hoja y el nodo adyacente de cada uno, el árbol o bosque resultante seguirá teniendo un emparejamiento perfecto, distinto del anterior solo que no existen las parejas eliminadas. 
+> **Lema 1**: Si en un árbol existe un emparejamiento perfecto, al eliminar los subgrafos inducidos por los nodos hoja y el nodo adyacente de cada uno, el árbol o bosque resultante seguirá teniendo un emparejamiento perfecto, distinto del anterior solo que no existen las parejas eliminadas.
 
 Es evidente que los nodos hojas solo pueden estar conectados a un nodo en cualquier emparejamiento perfecto que se haga, y ese es su nodo padre, por tanto, a los nodos padres de las hojas no se les puede emparejar ningún otro nodo del árbol para cualquier emparejamiento perfecto $\implies$ al eliminar los nodos hojas, sus padres y las aristas que inciden sobre ellos, el resto del grafo (no necesariamente conexo) no perdió las aristas que pertenecían al emparejamiento del resto de vértices, por tanto, existe un emparejamiento perfecto de estos vértices igual al original excepto en los vértices eliminados.
 
@@ -75,7 +75,7 @@ Si $G$ tiene una cadena de Euler $\implies$  exactamente 2 nodos son de degree i
 
 Supongamos que en $G$ exactamente 2 nodos son de degree impar. Sean $x$, $y$ dichos nodos, al agregar la arista $x,y$ se cumple que en el grafo todos los nodos son de degree par y por tanto el grafo es euleriano $\implies$ existe un ciclo euleriano, y dicho ciclo pasa por la arista $x,y$ exactamente una vez $\implies$ existe un camino que empieza por $x$ y termina en $y$ que recorre todas las aristas del grafo a excepto $x,y$, por lo cual, al eliminarla esto no se afecta y dicho camino sigue existiendo, el cual, es un camino euleriano
 
-## Problema 9 
+## Problema 9
 
 > La longana más larga posible en el dominó es de 51 fichas.
 
@@ -89,9 +89,9 @@ Estamos buscando un camino Euleriano, pero como todos los vértices tienen grado
 
 > Sea $G$ conexo tal que toda arista está contenida en un número impar de ciclos. Pruebe que $G$ es euleriano.
 
-Para demostrar que $G$ es euleriano basta probar que todos los vértices tienen degree par. 
+Para demostrar que $G$ es euleriano basta probar que todos los vértices tienen degree par.
 
-Supongamos que existe un vértice $u$ con degree impar, luego, sean sus vértices adyacentes $v_1, v_2, \ldots, v_k$ con $k$ impar. 
+Supongamos que existe un vértice $u$ con degree impar, luego, sean sus vértices adyacentes $v_1, v_2, \ldots, v_k$ con $k$ impar.
 
 ### `Vía 1`
 
@@ -101,7 +101,7 @@ Por tanto como $\not \exists \  G^* \implies \not \exists \ u$ vértice con degr
 
 ### `Vía 2`
 
-Construyamos un grafo $G^*$ con estos vértices $v_i$ y con $u$, y por cada ciclo que pase por una arista $(v_i,u)$ o $(u,v_i)$ agreguemos esa arista al grafo $G^*$. 
+Construyamos un grafo $G^*$ con estos vértices $v_i$ y con $u$, y por cada ciclo que pase por una arista $(v_i,u)$ o $(u,v_i)$ agreguemos esa arista al grafo $G^*$.
 
 Nótese que nuestro nuevo grafo puede tener múltiples aristas entre dos vértices, y que, si es posible que $u$ en $G$ tenga degree impar y cada arista pertenezca a una cantidad impar de ciclos implica que en $G^*$, como $u$ es adyacente a una cantidad impar de vértices y cada uno le aporta una cantidad impar de aristas, entonces su degree será impar, sin embargo esto no se cumple, ya que, por cada ciclo que pase por una arista $(v_i,u) \implies$ también debe pasar o haber pasado por una arista $(u,v_j)$ y por tanto le suma 2 al degree de $u \implies$ en $G^*$ $u$ tienen degree par.
 
@@ -130,7 +130,7 @@ Haciendo esto por cada par de vértices adyacentes en $cl(G)$ (por lo que dichos
 
 ## Teorema de Bondy Chvatal
 
->  Sea $G$ un grafo con $u,v$ dos vértices no adyacentes tales que $deg(u) + deg(v) ≥ n$. Entonces $G$ es hamiltoneano si y solo si $G + (u,v)$ es hamiltoneano.
+> Sea $G$ un grafo con $u,v$ dos vértices no adyacentes tales que $deg(u) + deg(v) ≥ n$. Entonces $G$ es hamiltoneano si y solo si $G + (u,v)$ es hamiltoneano.
 
 Si $G$ es hamiltoniano, al agregar una arista seguirá siendo hamiltoniano.
 
@@ -158,9 +158,9 @@ Supongamos que $G + (u,v)$ es hamiltoneano, por tanto existe un ciclo de hamilto
 
 Como $d(u)+d(u)\gt n$ significa que existe $i$ tal que las aristas $(u_i,v)$ y $(u,v_{i+1})$ existen en el grafo. Para demostrar esto tomemos los vértices en el orden de $P$ por parejas $\implies$ son $n-2$ parejas, quitando la primera y la última que es donde se encuentran $u$ y $v$, luego, entre dichos vértices deben seleccionar más de $n-2$ para ser adyacentes a un vértice, luego, por Principio del Palomar se cumple que en una pareja deben existir vértices adyancentes, y por la forma de escoger las parejas se cumple lo que queríamos demostrar. Por último, como las aristas $(u_i,v)$ y $(u,v_{i+1})$ existen en el grafo, teniendo en cuenta el orden de los vértices en $P$ obtenemos el ciclo.
 
-$$\cdots$$
-
-
+$$
+\cdots
+$$
 
 ## Problema 13
 
@@ -170,8 +170,3 @@ $$\cdots$$
 
 > Pruebe que el grafo de Petersen es no hamiltoniano.
 > ![grafo de Petersen](image.png)
-
-
-
-
-
