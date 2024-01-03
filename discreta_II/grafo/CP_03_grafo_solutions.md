@@ -96,6 +96,24 @@ Sin embargo, por las desigualdades anteriores se cumple que:
 
 Y uniendo ambas desigualdades obtenemos que $2 \sqrt{n} \leq \mathcal{X(G)} + \mathcal{X(G^C)}$.
 
+## Problema 5
+
+> Demuestre que para todo grafo $\mathcal{G}$ de tamaño $m$ se cumple que $\omega (\mathcal{G}) \leq \mathcal{X(G)} \leq \frac{1}{2}(1 + \sqrt{8m + 1})$.
+
+Agrupemos los vértices por colores. Sea $\mathcal{X(G)} = k$, por tanto, hay $k$ grupos de vértices que no pueden estar conectados entre ellos, sin embargo, cada grupo debe estar conectado con los otros grupos, por tanto, al menos deben haber $\frac{k(k-1)}{2}$ aristas. Si $m$ es la cantidad de aristas de $\mathcal{G}$ se cumple que:
+
+$$\frac{k(k-1)}{2} \le m$$
+$$k(k-1) \le 2m$$
+$$k^2-k-2m \le 0$$
+
+Aplicando discriminante $D=b^2-4ac$ se cumple que:
+
+$$D=1+8m$$
+
+Luego, $k$ puede tomar dos posibles valores, luego, tomando el mayor de ellos, se cumple la desigualdad:
+
+$$k \le \frac{1}{2}(1+\sqrt{1+8m})$$
+
 ## Problema 6
 
 > Sea $\mathcal{G}$ un grafo de orden $n$ y $\delta(\mathcal{G}) \geq d$. Demuestra que $\mathcal{X(G)} \geq \frac{n}{n - d}$.
@@ -108,18 +126,15 @@ Luego, se cumple que $(n-d) \ge \alpha(\mathcal{G})$, por lo que:
 
 $$(n-d) \times \mathcal{X(G)} \geq n$$
 
+## Problema 8
+
+> Sea $\mathcal{G}$ un grafo donde todo par de ciclos de longitud impar tiene al menos un vértice común. Demuestre que $\mathcal{X(G)} \leq 5$.
+
+Notemos que si tomamos un ciclo de longitud impar y lo quitamos, el grafo que queda no puede tener ciclos de longitud impar, ya que de cada uno retiramos al menos un vértice que tenía en común con el ciclo $\implies$ el grafo resultante es bipartito, por tanto se puede pintar de dos colores. Luego, como ya hemos demostrado, un ciclo impar se puede pintar con 3 colores, por tanto, seleccionando 3 colores distintos a los 2 colores ya escogidos para pintar el grafo obtenemos una coloracion válida de 5 colores.
+
 $$\cdots$$
-
-## Problema 5
-
-> Demuestre que para todo grafo $\mathcal{G}$ de tamaño $m$ se cumple que $\omega (\mathcal{G}) \leq \mathcal{X(G)} \leq \frac{1}{2}(1 + \sqrt{8m + 1})$.
-
-
 
 ## Problema 7
 
 > Demuestra que si $d_1$, $d_2$, ... , $d_n$ es la secuencia no creciente de grados de un grafo $\mathcal{G}$ entonces $\mathcal{X(G)} \leq 1 + \max_{1 \leq i \leq n}\{min(d_i, i - 1)\}$.
 
-## Problema 8
-
-> Sea $\mathcal{G}$ un grafo donde todo par de ciclos de longitud impar tiene al menos un vértice común. Demuestre que $\mathcal{X(G)} \leq 5$.
