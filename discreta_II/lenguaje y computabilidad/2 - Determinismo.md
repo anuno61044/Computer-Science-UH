@@ -206,7 +206,7 @@ Tomemos como caso base las cadenas de longitud 1 hasta 6 como en la inducción a
 
 ![](image_solutions/2.8.1.jpg)
 
-> 2.  El conjunto de todas las cadenas cuyo decimo símbolo desde la derecha es "1"
+> 2.  El conjunto de todas las cadenas cuyo décimo símbolo desde la derecha es "1"
 
 Para hacer este autómata es necesario almacenar todas las posibles subcadenas de longitud 10 en las que puede terminar la cadena porque al ser autómata finito determinista posee memoria finita y no puede almacenar información que no sea únicamente la de los estados, por lo cual, el autómata tendría $2^{10}$ estados.
 
