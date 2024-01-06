@@ -206,6 +206,20 @@ Tomemos como caso base las cadenas de longitud 1 hasta 6 como en la inducción a
 
 ![](image_solutions/2.8.1.jpg)
 
+Vamos a demostrar algunas características del lenguaje, las cuales, si el autómata identifica significa que reconoce cadenas del lenguaje. Sea $w$ una cadenas del lenguaje, entonces se cumple que:
+
+- En $w$ no pueden existir más de 3 unos consecutivos
+- Si existe una subcadena $w' \subseteq w$ tal que $w' = 111$, entonces antes y después de $w'$ en $w$ existe 00, o sea, tres unos consecutivos están rodeados necesariamente de dos o más ceros.
+- Si existen dos unos consecutivos, antes y después de ellos deben existir dos o más ceros ceros o la subcadena $010$.
+- La subcadena $10$ puede estar rodeada de ella misma, de $110$ o de más de un cero.
+
+Cualquier cadena que pertenezca al lenguaje debe cumplir esas condiciones, las cuales son necesarias y suficientes, porque contemplan todos los posibles casos en que pueden existir unos en las cadenas del lenguaje. Demostremos que el autómata reconoce cadenas que cumplen esas condiciones.
+
+- Es fácil ver que la primera condición es cumplida, ya que en ningún momento el autómata reconoce cuatro unos consecutivos.
+- El autómata reconoce tres unos consecutivos en los estados $q_0,q_1,q_2,q_3$ y vemos que después de $q_3$ solo son reconocidos más de un cero, y a $q_0$ (el cual contiene un ciclo de ceros), solo se puede llegar desde $q_4$ y desde $q_5$ con 0, y a ambos estados solo se puede acceder con 0.
+- Dos unos consecutivos se reconocen en el autómata en las secuencias de estados $q_5,q_6,q_7$, $q_0,q_1,q_2$ y $q_1,q_2,q_3$. Nos interesa analizar de dichas secuencias las que reconozcan exactamente $11$, por lo tanto descartamos la secuencia $q_1,q_2,q_3$, ya que para llegar a $q_1$ debemos partir de $q_0$ con $1$, lo que genera la subcadena $111$. En el caso de $q_0,q_1,q_2$, notemos que reconoce exactamente $11$ y no $111$ si y solo si de $q_2$ lee $0$, por lo que pasa a $q_8$ y desde ese punto la secuencia válida reconocida por el autómata es $10$, pasando por los estados $q_9,q_5$. Por último, $q_5,q_6,q_7$, a la cual se llega por las transiciones $q_0,q_1,q_5$ leyendo los caracteres $10$ y finaliza en $q_7$, luego de ahí la única secuenca de 2 caracteres válidas (que utilice $1$) es $010$ pasando por los estados $q_7,q_8,q_9,q_5$.
+- Las secuencias de estados que reconocen $10$ en el autómata son $q_2,q_3,q_4$ (la cual no es válida porque reconoce más de un $1$), $q_6,q_7,q_8$ (tampoco por la misma razón), $q_0,q_1,q_2$, $q_5,q_6,q_7$ y $q_8,q_9,q_5$. Estas tres últimas secuencias son válidas, y, como la única secuencia de estados que reconoce $0110$ es $q_5,q_6,q_7$ (previamente demostrado), la única secuencia de estados que reconoce $10$ que puede estar antecedida por $0110$ es $q_8,q_9,q_5$, mientras que las demás reconocen antes y después, subcadenas de tipo $00$ y $10$
+
 > 2.  El conjunto de todas las cadenas cuyo décimo símbolo desde la derecha es "1"
 
 Para hacer este autómata es necesario almacenar todas las posibles subcadenas de longitud 10 en las que puede terminar la cadena porque al ser autómata finito determinista posee memoria finita y no puede almacenar información que no sea únicamente la de los estados, por lo cual, el autómata tendría $2^{10}$ estados.
