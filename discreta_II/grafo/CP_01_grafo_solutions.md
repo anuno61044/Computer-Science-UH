@@ -16,7 +16,7 @@ Supongamos que tenemos $n$ personas, de las cuales cada una de ellas conoce a al
 
 ## Problema 3
 
-> Demuestre que si $G$ y $H$ son isomorfos por un isomorfismo $f$, entonces el $deg(v)$ vértice de G es igual al $deg(f(v))$ vértice de H. 
+> Demuestre que si $G$ y $H$ son isomorfos por un isomorfismo $f$, entonces el $deg(v)$ vértice de G es igual al $deg(f(v))$ vértice de H.
 
 Sea $S_G = \{u \in V_G: v,u \in E_G\}$ y $S_H = \{f(u) \in V_H: f(v),f(u) \in E_H\}$. Nótese que $|S_G| = d[v]$ y $|S_H| = d[f(v)]$, luego, por definición de grafos isomorfos, si $u,v \in E_G \implies f(u),f(v) \in E_H$, entonces se cumple que $|S_G| \le |S_H| \implies d[v] \le d[f(v)]$.
 
@@ -31,16 +31,18 @@ Utilizando la definición de grafos isomorfos, si $u,v \in E_G \implies f(u),f(v
 ## Problema 4 (incompleto)
 
 > 4. Demuestre que las siguientes definiciones son equivalentes:
->     1. $G$ es un grafo acíclico y conexo
->     2. $G$ es acíclico y $|E| = n-1$
->     3. $G$ es conexo y $|E| = n-1$
->     4. $G$ es conexo pero si se suprime una arista cualquiera, deja de serlo
->     5. $G$ no tiene ciclos, pero si se añade una arista entre vértices no adyacentes, entonces se crea exactamente uno
->     6. Todo par de vértices de G está conectado
+>    1. $G$ es un grafo acíclico y conexo
+>    2. $G$ es acíclico y $|E| = n-1$
+>    3. $G$ es conexo y $|E| = n-1$
+>    4. $G$ es conexo pero si se suprime una arista cualquiera, deja de serlo
+>    5. $G$ no tiene ciclos, pero si se añade una arista entre vértices no adyacentes, entonces se crea exactamente uno
+>    6. Todo par de vértices de G está conectado
 
 Para demostrar la equivalencia de estas proposiciones demostremos que:
 
-$$1 \implies 2 \implies 3 \implies 4 \implies 5 \implies 6 \implies 1$$
+$$
+1 \implies 2 \implies 3 \implies 4 \implies 5 \implies 6 \implies 1
+$$
 
 > **Lema 1**: Al añadir una arista a una componente conexa acíclica se crea un ciclo.
 
@@ -82,7 +84,7 @@ Sabemos que:
 
 Supongamos que existe un vértice de grado impar, luego, dicha cadena cerrada de Euler debe comenzar en este vértice porque debe abarcar todas las aristas sin repetición, pero como es cerrada debe terminar en el vértice, sin embargo, como tiene degree impar esto no es posible, contradición.
 
-Supongamos que todos los vértices tienen grado par (y es conexo por supuesto), entonces existe $u,v,w$ tal que $(u,v),(u,w) \in E$. Hagamos inducción en $E$, caso base $n=1$ lo cumple. 
+Supongamos que todos los vértices tienen grado par (y es conexo por supuesto), entonces existe $u,v,w$ tal que $(u,v),(u,w) \in E$. Hagamos inducción en $E$, caso base $n=1$ lo cumple.
 
 Sea $G'=<V,E'>$ donde $E'=E-\{(u,v),(u,w)\}+(v,w)$, el cual sigue cumpliendo que todos los vértices tienen grado par. Si $G'$ es conexo, nótese que existe por hipótesis de inducción un ciclo euleriano, por lo que basta con eliminar la arista añadida e insertar las aristas eliminadas y el ciclo seguirá existiendo. Si $G'$ no es conexo significa que existen dos componentes conexas y se cumple que $u\in H_u$ y $v,w \in H_{v,w}$, y en cada una de ellas por hipótesis de inducción existe un ciclo euleriano, por lo que, volviendo al grafo anterior, basta con partir de $v$ hasta $u$, recorrer el ciclo en $H_u$, luego ir hacia $w$ por la arista $(u,w)$ y por último recorrer el camino euleriano en $H_{v,w}$ hacia $v$, por tanto, existe un ciclo euleriano.
 
@@ -94,15 +96,15 @@ Supongamos que existen dos componentes conexas, y de cada una seleccionamos un v
 
 ## Problema 10
 
-> Demuestre que si $\Delta$(G) + $\delta(g)\geq n-1$, entonces $D(G) \leq 4$
+> Demuestre que si $\Delta$(G) + $\delta(G)\geq n-1$, entonces $D(G) \leq 4$
 
 ### `Vía 1`
 
-Nótese que si $\Delta$(G) + $\delta(g)\geq n-1$ significa que la suma de los degree de cualquier par de vértices del grafo lo cumple, por tanto, para todos los vértices o están conectados con el vértice $\Delta$(G) o tienen con él un adyacente en común. Por tanto, la mayor de todas las distancias entre un par de vértices será a lo sumo a través de un vértice conectado a $\Delta$(G), o sea, de $v$ a $u$ es necesario pasar por $v'$, luego a $\Delta$(G), luego a $u'$ y finalmente llegar a $u$, lo cual, resulta en un camino de tamaño 4, y este es el caso extremo, por tanto $D(G) \leq 4$
+Nótese que si $\Delta$(G) + $\delta(g)\geq n-1$ significa que para todos los vértices o están conectados con el vértice $\Delta$(G) o tienen con él un adyacente en común. Por tanto, la mayor de todas las distancias entre un par de vértices será a lo sumo a través de un vértice conectado a $\Delta$(G), o sea, de $v$ a $u$ es necesario pasar por $v'$, luego a $\Delta$(G), luego a $u'$ y finalmente llegar a $u$, lo cual, resulta en un camino de tamaño 4, y este es el caso extremo, por tanto $D(G) \leq 4$
 
 ### `Vía 2`
 
-Como se cumple $\Delta$(G) + $\delta(g)\geq n-1$ y además $\delta(g)\geq 1$ restando ambas desigualdades tenemos que $\Delta$(G)$\geq n-2$ por tanto todos $\Delta$(G)$=n-1$ o $\Delta$(G) $=n-2$, en el primer caso el diametro es de tamaño 3 y en el segundo caso solo hay un nodo no adyacente a al de mayor grado por tanto el diametro es de tamaño 4.  
+Como se cumple $\Delta$(G) + $\delta(g)\geq n-1$ y además $\delta(g)\geq 1$ restando ambas desigualdades tenemos que $\Delta$(G)$\geq n-2$ por tanto todos $\Delta$(G)$=n-1$ o $\Delta$(G) $=n-2$, en el primer caso el diametro es de tamaño 2 y en el segundo caso solo hay un nodo no adyacente a al de mayor grado por tanto el diametro es de tamaño 4.
 
 ## Problema 11
 
@@ -122,9 +124,9 @@ Supongamos que el grafo es conexo Si existe un ciclo de tamaño 3 ya se cumple q
 
 ## Problema 13
 
-> Demuestre que si $\sum_{i \in V(G)} {deg(i)\choose2} \gt {n \choose 2}$ G 
+> Demuestre que si $\sum_{i \in V(G)} {deg(i)\choose2} \gt {n \choose 2}$ G tiene un ciclo exactamente de tamaño 4
 
-Nótese que $\sum_{i \in V(G)} {deg(i)\choose2}$ cuenta todos los posibles caminos de longitud 2 que existen en el grafo y ${n \choose 2}$ cuentos los posibles pares de nodos del grafo. Como se cumple que $\sum_{i \in V(G)} {deg(i)\choose2} \gt {n \choose 2}$ entonces por Principio de las Casillas existen al menos dos caminos de longitud dos cuyos extremos son iguales, por tanto, obtendríamos un ciclo de tamaño 4.
+Nótese que $\sum_{i \in V(G)} {deg(i)\choose2}$ cuenta todos los posibles caminos de longitud 2 (o sea que tengan 2 aristas) que existen en el grafo y ${n \choose 2}$ cuentos los posibles pares de nodos del grafo. Como se cumple que $\sum_{i \in V(G)} {deg(i)\choose2} \gt {n \choose 2}$ entonces por Principio de las Casillas existen al menos dos caminos de longitud dos cuyos extremos son iguales, por tanto, obtendríamos un ciclo de tamaño 4.
 
 ## Problema 14
 
@@ -135,9 +137,9 @@ Supongamos que $G$ no es conexo $\implies$ tiene $k > 1$ componentes conexas. Se
 ## Problema 15
 
 > Demuestre que si $v$ es punto de articulación de un grafo G conexo, entonces al quitar $v$, la cantidad de componentes conexas es a lo
-sumo $deg(v)$.
+> sumo $deg(v)$.
 
-Sabemos que $v$ es punto de articulación, por lo que al eliminarlo aumenta el número de componentes conexas en el grafo. 
+Sabemos que $v$ es punto de articulación, por lo que al eliminarlo aumenta el número de componentes conexas en el grafo.
 
 Supongamos que al hacer esa operación la cantidad de componentes conexas resulta en más de $deg(v)$, luego, al conectar $v$ como antes, cada una de esas componentes conexas no estaban unidas entre ellas, sino a través de $v$, y como hay más de $deg(v)$ significa que $deg(v)$ es ahora mayor de lo que era antes, contradicción.
 
@@ -158,21 +160,23 @@ $w[0], w[i], \ldots, w[j], w[0]$
 
 > Demuestre que si $n \geq 9$, entonces $\alpha(G) \geq 4$ o $\omega(G) \geq 3$.
 
+Si en $G$ existe una cantidad de vértices mayores que 9 tomemos un subgrafo inducido de 9 vértices.
+
 Supongamos que existe en $G$ un vértice $u$ tal que $deg(u) \ge 4$, si alguno de sus adyacentes están conectados tenemos $\omega(G) \ge 3$, de lo contrario tenemos $\alpha(G) \ge 4$. Si lo anterior no pasa $\implies$ en $G^c$ se cumple que $v$ tiene 5 o más vértices conectados
 
 Si en $G^c$ se cumple que $deg(v) \ge 6$ se cumple lo enunciado en el ejercicio 12 con el grafo inducido por estos vértices adyacentes, en caso de haber un conjunto independiente de tamaño 3 $\implies$ en $G$ hay un clique de tamaño 3, de lo contrario, hay un clique de tamaño 3, que junto al nodo al que son adyacentes toma tamaño 4 $\implies$ en $G$ hay un conjunto independiente de tamaño 4.
 
-Nótese que todos los vértices del grafo no pueden ser pares porque hay una cantidad impar de vértices, luego, o existe algún nodo con degree mayor o igual a 4 o en su complemento tiene degree mayor o igual que 6.
+Nótese que todos los vértices del grafo no pueden ser impares porque hay una cantidad impar de vértices, luego, o existe algún nodo con degree mayor o igual a 4 o en su complemento tiene degree mayor o igual que 6.
 
 ## Problema 18
 
 > Demuestre que si $m \geq \frac{(n-1)*(n-2)}{2} +1$, entonces G es conexo.
 
-Demostremos que la mayor cantidad de aristas que debe tener un grafo para que no sea conexo es menor o igual que $m \geq \frac{(n-1)*(n-2)}{2} +1$.
+Demostremos que la mayor cantidad de aristas que debe tener un grafo para que no sea conexo es menor o igual que $\frac{(n-1)*(n-2)}{2} +1$.
 
 Supongamos que tenemos más de dos componentes conexas, luego, podemos unir dos de ellas con una arista y el grafo segirá siendo no conexo, por lo que la cantidad de aristas no es la mayor.
 
-Tenemos dos componentes conexas densas (o sea que cada una no admite más aristas) $C1$ y $C2$, supongamos que $|V(C1)| \ge |V(C2)|$, luego, si tomamos un nodo de $C2$, lo extraemos y agregamos a $C1$ con la cantidad de aristas necesarias para seguir manteniendo la densidad de la componente conexa nos damos cuenta que la cantidad de aristas del grafo aumenta, y esto se puede seguir haciendo hasta que quede una componente conexa de un nodo y el resto de nodos en la otra, en cuyo caso, la cantidad de aristas sería máxima y tendríamos $\frac{(n-1)*(n-2)}{2}$ aristas, por lo que, al agregar una más nos aseguramos que el grafo sea conexo.
+Tenemos dos componentes conexas completas (o sea que cada una no admite más aristas) $C1$ y $C2$, supongamos que $|V(C1)| \ge |V(C2)|$, luego, si tomamos un nodo de $C2$, lo extraemos y agregamos a $C1$ con la cantidad de aristas necesarias para seguir manteniendo la densidad de la componente conexa nos damos cuenta que la cantidad de aristas del grafo aumenta o se mantiene igual, y esto se puede seguir haciendo hasta que quede una componente conexa de un nodo y el resto de nodos en la otra, en cuyo caso, la cantidad de aristas sería máxima y tendríamos $\frac{(n-1)*(n-2)}{2}$ aristas, por lo que, al agregar una más nos aseguramos que el grafo sea conexo.
 
 ## Problema 19
 
@@ -186,7 +190,7 @@ Sea $v$ un vértice de grado $k$ y tomémoslo como raíz del árbol y se cumple 
 
 Supongamos que $G$ tiene más de una componente conexa, si tomamos dos nodos de cada una que estén conectados entre ellos (ya que no tiene nodos aislados) vemos que consituyen un subgrafo inducido con exactamente dos aristas, lo cual incumple la condición inicial.
 
-Por tanto, $G$ es conexo, luego, tomemos dos nodos que no estén conectados entre ellos, por hipótesis cada uno se encuentra conectado a al menos otro nodo porque no existen nodos aislados, y si tomamos esos nodos y un nodo al cual cada uno se encuentra conectado (pueden ambos estar conectados al mismo nodo), el subgrafo inducido por dichos nodos tendría exactamente dos aristas $\implies$ para todo par de nodos se cumple que deben estar conectados por una arista $\implies G$ es completo.
+Por tanto, $G$ es conexo, luego, tomemos dos nodos que no estén conectados entre ellos, por hipótesis cada uno se encuentra conectado a al menos otro nodo porque no existen nodos aislados, y si tomamos esos nodos y un nodo al cual cada uno se encuentra conectado (pueden ambos estar conectados al mismo nodo), el subgrafo inducido por dichos nodos tendría exactamente dos aristas $\implies$ es necesario agregar otra arista a ese subrafo inducido, y vemos que esto podemos repetirlo en ese subgrafo hasta formar un clique de 4 $\implies$para todo par de nodos se cumple que deben estar conectados por una arista $\implies G$ es completo.
 
 ## Problema 21
 
@@ -195,9 +199,3 @@ Por tanto, $G$ es conexo, luego, tomemos dos nodos que no estén conectados entr
 Procedamos por inducción en la cantidad de vértices.
 
 Supongamos que en un grafo de $k$ vertices se cumple, luego, en un grafo de $k+1$, al eliminar un vértice podemos encontrar un subgrafo de este que cumpla la condición, luego, al agregar el vértice removido, lo podemos ubicar en uno de los dos conjuntos de la bipartición, supongamos que este vértice aporta $e$ aristas, luego, tomamos el conjunto que menos vértices adyacentes tenga y lo insertamos ahí, e insertamos también en la bipartición todas las aristas de dicho vértice hacia el otro conjunto, las cuales serán $\ge \frac{e}{2}$ (notemos que en la bipartición se encuentran todos los vértices del grafo para garantizar que se cumpla la condición)
-
-
-
-
-
-

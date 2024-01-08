@@ -16,6 +16,7 @@ Para demostrar que un autómata reconoce las cadenas del lenguaje es necesario d
 - Tesis: una cadena de longitud $k+1$ que termina en un estado final pertenece al lenguaje.
 
 Para demostrar la tesis tenemos una cadena de tamaño $k+1$, tomemos el último caracter de la cadena y distingamos dos casos:
+
 - El caracter es $b$: eso significa que la cadena de longitud $k$ hasta ese caracter termina en $q_0$ porque el estado que llega a $q_0$ con una $b$ es el mismo $q_0$, y como este es final y la cadena hasta dicho caracter es de longitud $k$ entonces pertenece al lenguaje, y como al añadirle una $b$ no modifica la paridad de la cantidad de $a$ en la cadena esta cadena completa de longitud $k+1$ también pertenece al lenguaje
 - El caracter es $a$: eso significa que la cadena de longitud $k$ hasta ese caracter termina en $q_1$ porque es el estado que llega a $q_0$ con una $a$, y por tanto hasta este momento la cantidad de $a$ en la cadena es una cantidad impar, por lo cual, al adicionar una $a$ cambia la paridad de este caracter y dicha cadena pertenece al lenguaje
 
@@ -23,11 +24,12 @@ Para demostrar la tesis tenemos una cadena de tamaño $k+1$, tomemos el último 
 
 Notemos dada la estructura del autómata que el caracter $a$ es el único que hace cambiar de estado, por lo cual, tomemos la cadena y eliminemos las $b$, luego, como la cantidad de $a$ es par analicémosla de 2 en 2, en cada caso el autómata empieza en $q_0$, com la 1ra $a$ pasa a $q_1$ y con la 2da a $q_0$ de nuevo, y es fácil ver que este comportamiento se repite con cada par de $a$, por tanto la cadena después de la última $a$ termina en un estado que es final, por lo cual es reconocida por el autómata.
 
->    2. Tienen una cantidad impar de "a" e impar de "b"
+> 2. Tienen una cantidad impar de "a" e impar de "b"
 
 ![](image_solutions/2.1.2.jpg)
 
 Definamos antes de demostrar lo que representan los estados:
+
 - $q_0$: cantidad par tanto de $a$ como de $b$
 - $q_1$: cantidad par de $a$ e impar de $b$
 - $q_2$: cantidad par de $b$ e impar de $a$
@@ -47,7 +49,7 @@ Análogamente ocurre al analizar cadenas solo con $b$, pero esta vez los estados
 
 Si una cadena pertenece al lengiaje significa que tiene una cantidad impar de $a$ y de $b$, lo cual, por lo anteriormente demostrado implica que termina en el estado $q_3$, el cual es un estado final en el autómata y por tanto es reconocida.
 
->    3. Tienen dos "a" consecutivas en algún lugar de la cadena
+> 3. Tienen dos "a" consecutivas en algún lugar de la cadena
 
 ![](image_solutions/2.1.3.jpg)
 
@@ -60,6 +62,7 @@ Apliquemos inducción fuerte en la longitud de la cadena:
 - Tesis: una cadena de longitud $n=k+1$ que termina en un estado final pertenece al lenguaje
 
 Como los caracteres de la cadena pertenecen al alfabeto entonces termina en $aa$, $ab$ o $b$, analicemos cada uno de estos casos:
+
 - Si termina en $aa$ es más que obvio que dicha cadena pertenece al lenguaje
 - En el caso de $ba$ vemos que, si lo último que leyó fue $a$ significa que pudo haber venido de $q_1$ o del propio estado final $q_2$, pero como antes había leído una $b$ y no existen transiciones a $q_1$ con una $b$ significa que la cadena antes de leer $ba$ se encontraba en el estado final $q_2$ y como su longitud es menor que $k$ entonces esta pertenece al lenguaje por hipótesis de inducción
 - Por último, si leyó una $b$ significa que al estado final solo pudo llegar desde el propio estado final, y como la longitud de la cadena hasta este caracter es $k$, por hipótesis de inducción pertenece al lenguaje.
@@ -72,8 +75,7 @@ Nótese que al empezar a leer $x$ el autómata se encuentra en $q_0$, demostremo
 
 Es fácil ver que al leer la subcadena $aa$ termina el autómata en $q_2$, y luego, independientemente de como esté conformada $y$, se quedará en $q_2$ por lo que será reconocida.
 
-
->    4. Tienen dos "a" consecutivas en algún lugar de la cadena, pero no al final
+> 4. Tienen dos "a" consecutivas en algún lugar de la cadena, pero no al final
 
 ![](image_solutions/2.1.4.jpg)
 
@@ -111,7 +113,8 @@ Como la cadena pertenece al lenguaje $\implies$ en alguna posición de la cadena
 
 ## Ejercicio 3
 
-> Construya un autómata que reconozca el lenguaje de las cadenas *x2y* donde *x* y *y* son cadenas sobre el alfabeto {0, 1} tal que: 
+> Construya un autómata que reconozca el lenguaje de las cadenas *x2y* donde *x* y *y* son cadenas sobre el alfabeto {0, 1} tal que:
+>
 > 1. El número que representa cada una es divisible por 3.
 
 ![](image_solutions/2.3.1.jpg)
@@ -141,6 +144,7 @@ Si una cadena terminó en un estado final significa que reconoció un 2 en algú
 `Demostración (si una cadena pertenece al lenguaje termina en un estado que es final en el autómata).`
 
 Supongamos que la cadena $s=x2y$ pertenece al lenguaje, luego de leer 2 el autómata habrá salido de un estado $q_i$, y a partir de este momento comenzará a leer la subcadena $y$ y a transitar por los estados que representan los restos de $y$ módulo 3, y se distinguen 3 casos:
+
 - $x \equiv 0 \ mod(3)$ por lo que, habrá reconocido 2 desde $q_0$ y sabemos que en este caso debe ocurrir que $y \equiv 0 \ mod(3)$ en el autómata la cadena terminará en un estado final $p_0$
 - $x \equiv 1 \ mod(3)$ por lo que, habrá reconocido 2 desde $q_1$ y sabemos que en este caso debe ocurrir que $y \equiv 2 \ mod(3)$ en el autómata la cadena terminará en un estado final $r_2$
 - $x \equiv 2 \ mod(3)$ por lo que, habrá reconocido 2 desde $q_2$ y sabemos que en este caso debe ocurrir que $y \equiv 1 \ mod(3)$ en el autómata la cadena terminará en un estado final $t_1$
@@ -148,11 +152,11 @@ Supongamos que la cadena $s=x2y$ pertenece al lenguaje, luego de leer 2 el autó
 ## Ejercicio 4
 
 > Sea Q el conjunto de todas las listas no vacías de enteros positivos y L el conjunto de todas las cadenas sobre el alfabeto {0, 1}. Se define la función $f: Q \rightarrow L$ tal que:
->    
+>
 > $f(l) = (1)^{a_1}0(1)^{a_2}0 \ldots 0(1)^{a_k}$ donde $l = \{ a_1, a_2, ..., a_k \} \in Q$
-> 
+>
 > Por ejemplo, $f(2, 3, 2) = 110111011$.
->    
+>
 > Construya el autómata que reconoce el lenguaje de las cadenas que pertenecen a la imagen de f.
 
 Supongamos por simplicidad que la cadena vacía pertenece al lenguaje, de lo contrario es solo agregar un estado inicial que tenga transición con 1 a $q_0$
@@ -162,11 +166,13 @@ Supongamos por simplicidad que la cadena vacía pertenece al lenguaje, de lo con
 `Demostración (si una cadena termina en un estado que es final pertenece al lenguaje).`
 
 Procedamos por inducción fuerte al tamaño de la cadena:
+
 - Para $n=1$ se cumple con la cadena 1
 - Supongamos que hasta $n=k$ se cumple que si la cadena es reconocida por el autómata entonces pertenece al lenguaje
 - Demostremos que se cumple para $n=k+1$
 
 Nótese que si la cadena es reconocida por el autómata entonces finaliza en el estado $q_0$ que es final, y hasta él solo se llega con transiciones de 1. Luego, la cadena reconocida termina en 11 o 01:
+
 - En caso que termine en 11 observamos que la subcadena de tamaño $k$ termina en $q_0$, por lo cual es reconocida por el autómata y por hipótesis de inducción pertenece al lenguaje, o sea, existe una lista $l_0$ tal que corresponde a esa subcadena, y dicha lista, al sumarle 1 a su último elemento corresponde a la cadena en cuestión, y por tanto pertenece al lenguaje
 - En caso que termine en 01, si termina en $q_0$ con una transición 1 pudo haber venido de $q_0$ o de $q_1$, pero como anteriormente leyó un 0 entonces vino de $q_1$, estado a donde solo se llega con transición 1 desde $q_0$, o sea, un estado final, por lo que la subcadena de tamaño $k-1$ (porque $q_1$ no es estado inicial) pertenece al lenguaje, es decir, existe una lista  $l_0$ que corresponde a la cadena, luego, al adicionarle el elemento 1 a la lista da como resultado la cadena que estabamos analizando de longitud $k+1$, por lo que pertenece al lenguaje
 
@@ -175,6 +181,7 @@ Nótese que si la cadena es reconocida por el autómata entonces finaliza en el 
 Procedamos por inducción, teniendo como casos base $n=1$ y $n=2$ con las cadenas $1$ y $11$. Supongamos que para $n=k-1$ y $n=k$ se cumple, y demostremos que para $n=k+1$ cumple que si una cadena pertenece al lenguaje termina en un estado que es final en el autómata.
 
 Si la cadena de longitud $k+1$ pertenece al lenguaje entonces diferenciemos los casos en que termine en 11 o 01:
+
 - En caso que termine en 11, notemos que la subcadena de tamaño $k$ pertenece al lenguaje, ya que el último elemento en su lista correspondiente $l$ sería al menos 1 $\implies$ termina en el estado final $q_0$, luego al leer 1 vuelve a caer en $q_0$, por lo que la cadena de tamaño $k+1$ sería reconocida
 - En el caso de 01, según la configuración de las cadenas del lenguaje, antes del 0 vendría un 1, por lo que la subcadena de tamaño $k-1$ pertenece al lenguaje por la justificación anterior y es reconocida por el autómata por hipótesis de inducción, en este punto se encuentra en $q_0$, al leer 0 pasa a $q_1$ y finalmente, con 1 termina en $q_0$ el cual es estado final, por tanto queda demostrado.
 
@@ -187,6 +194,7 @@ Si la cadena de longitud $k+1$ pertenece al lenguaje entonces diferenciemos los 
 Nótese que las cadenas: $*$, $*a$, $*a*$, $*a*a$, $*a*a*$, $*a*a*b$, $*a*a*c$ cumplen. Supongamos que para un cierto valor $k$ se cumple que la cadena que tiene longitud $k$ y es reconocida por el autómata pertenece al lenguaje, probemos que para $k+1$ también se cumple.
 
 Separemos los siguientes casos:
+
 - $k+1 \equiv 0 \ mod(6)$ luego la cadena terminó en $q_0$, por lo que le fue antecedida por $q_5$ el cual es un estado final $\implies$ la subcadena de tamaño $k$ pertenece al lenguaje. Luego, la posición $k+1$ es par múltiplo de 3, por lo que según las condiciones del lenguaje dicha posición no contiene $a$, y para llegar al estado $q_0$ en que fue reconocida la cadena en el autómata solo hay transición posible con $b$ o $c$ por lo que dicha cadena de tamaño $k+1$ también pertenece al lenguaje
 - $k+1 \equiv 1,3,5 \ mod(6)$ en este caso la cadena terminó en uno de los estados $q_1,q_3,q_5$ respectivamente, a los cuales solo se accede desde el estado $q_0,q_2,q_4$ respectivamente hasta los cuales, la subcadena de tamaño $k$ fue reconocida y por hipótesis de inducción pertenece al lenguaje, pero esta posición $k$ es par, en la cual hay restricción en el lenguaje, pero en la siguiente posición ($k+1$) no, por tanto, las transiciones $q_0-q_1$, $q_2-q_3$, $q_4-q_5$ en el autómata, que son posibles con cualquier caracter del alfabeto, son válidas para que la cadena de longitud $k+1$ pertenezca al lenguaje
 - $k+1 \equiv 2,4 \ mod(6)$ en estos casos la cadena terminó en los estados $q_2,q_4$ respectivamente, a los cuales solo pudo llegar desde los estados $q_1,q_3$, y dichos estados son finales y por hipótesis de inducción, la cadena que en ambos se reconoció de longitud $k$ pertenece al lenguaje, sin embargo, la posición $k+1$ es par pero no múltiplo de 3, por lo que según las restricciones del lenguaje debería continuar en ambos casos el caracter $a$, el cual, es necesario leer en el autómata desde los estados $q_1,q_3$ para llegar a los estados $q_2,q_4$ respectivamente, y por tanto, sus cadenas de longitud $k+1$ son reconocidas
@@ -202,7 +210,8 @@ Tomemos como caso base las cadenas de longitud 1 hasta 6 como en la inducción a
 ## Ejercicio 8
 
 > \* Construya el autómata que reconoce el siguiente lenguaje sobre el alfabeto {0, 1}
-> 1.  El conjunto de todas las cadenas tal que cada bloque de cinco símbolos consecutivos contenga al menos dos "0"
+>
+> 1. El conjunto de todas las cadenas tal que cada bloque de cinco símbolos consecutivos contenga al menos dos "0" **(demostracion en proceso)**
 
 ![](image_solutions/2.8.1.jpg)
 
@@ -220,21 +229,21 @@ Cualquier cadena que pertenezca al lenguaje debe cumplir esas condiciones, las c
 - Dos unos consecutivos se reconocen en el autómata en las secuencias de estados $q_5,q_6,q_7$, $q_0,q_1,q_2$ y $q_1,q_2,q_3$. Nos interesa analizar de dichas secuencias las que reconozcan exactamente $11$, por lo tanto descartamos la secuencia $q_1,q_2,q_3$, ya que para llegar a $q_1$ debemos partir de $q_0$ con $1$, lo que genera la subcadena $111$. En el caso de $q_0,q_1,q_2$, notemos que reconoce exactamente $11$ y no $111$ si y solo si de $q_2$ lee $0$, por lo que pasa a $q_8$ y desde ese punto la secuencia válida reconocida por el autómata es $10$, pasando por los estados $q_9,q_5$. Por último, $q_5,q_6,q_7$, a la cual se llega por las transiciones $q_0,q_1,q_5$ leyendo los caracteres $10$ y finaliza en $q_7$, luego de ahí la única secuenca de 2 caracteres válidas (que utilice $1$) es $010$ pasando por los estados $q_7,q_8,q_9,q_5$.
 - Las secuencias de estados que reconocen $10$ en el autómata son $q_2,q_3,q_4$ (la cual no es válida porque reconoce más de un $1$), $q_6,q_7,q_8$ (tampoco por la misma razón), $q_0,q_1,q_2$, $q_5,q_6,q_7$ y $q_8,q_9,q_5$. Estas tres últimas secuencias son válidas, y, como la única secuencia de estados que reconoce $0110$ es $q_5,q_6,q_7$ (previamente demostrado), la única secuencia de estados que reconoce $10$ que puede estar antecedida por $0110$ es $q_8,q_9,q_5$, mientras que las demás reconocen antes y después, subcadenas de tipo $00$ y $10$
 
-> 2.  El conjunto de todas las cadenas cuyo décimo símbolo desde la derecha es "1"
+> 2. El conjunto de todas las cadenas cuyo décimo símbolo desde la derecha es "1"
 
 Para hacer este autómata es necesario almacenar todas las posibles subcadenas de longitud 10 en las que puede terminar la cadena porque al ser autómata finito determinista posee memoria finita y no puede almacenar información que no sea únicamente la de los estados, por lo cual, el autómata tendría $2^{10}$ estados.
 
-> 3.  El conjunto de todas las cadenas que comienzan o terminan con "01"
+> 3. El conjunto de todas las cadenas que comienzan o terminan con "01"
 
 ![](image_solutions/2.8.3.jpg)
 
-> 4.  El conjunto de todas las cadenas tal que el número de "0" es divisible por 5 y el número de "1" es divisible por 3
+> 4. El conjunto de todas las cadenas tal que el número de "0" es divisible por 5 y el número de "1" es divisible por 3
 
 ## Ejercicio 9
 
 > \*\* Construya el autómata que reconoce el siguiente lenguaje sobre el alfabeto {0, 1}:
 >
-> 2.  El conjunto de todas las cadenas, que interpretadas en reverso como un número binario, son divisibles por 5. Por ejemplo, las cadenas "0", "10011", "1001100", y "0101" pertencen a este lenguaje.
+> 2. El conjunto de todas las cadenas, que interpretadas en reverso como un número binario, son divisibles por 5. Por ejemplo, las cadenas "0", "10011", "1001100", y "0101" pertencen a este lenguaje.
 
 ![](image_solutions/2.9.2.png)
 
@@ -257,7 +266,3 @@ Nótese que los restos de las potencias de 2 modúlo 5 y todos los restos módul
 `Demostración por inducción(en cada momento una cadena leída en el estado [i,j] deja resto i módulo 5 y la última potencia de 2 leída deja resto j).`
 
 `Demostración por inducción(en cada momento una cadena leída deja resto i módulo 5 y la última potencia de 2 analizada deja resto j termina en el estado [i,j]).`
-
-
-
-

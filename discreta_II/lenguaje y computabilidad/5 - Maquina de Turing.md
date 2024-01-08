@@ -17,6 +17,7 @@ Nótese que entre cadenas $\subset \{b\}*$ no pueden existir cadenas con $a$ por
 Nótese también que las transiciones $x$ son equivalentes a obviar dicho caracter en la cinta, ya que al reconocerlo la MT se mantiene en el estado y avanza, lo cual, es equivalente a que no lo hubiese leído y saltara esa posición, por lo que, al marcar la primera $a$ como $y$ y una cantidad $m$ de $b$, la cinta a analizar por la MT es equivalente a analizar la cadena $a^{n-1}b^{k-m}$
 
 Nótese además que la cantidad de $a$ y de $b$ tienen la misma paridad:
+
 - Supongamos que la cantidad de $a$ es par $\implies$ al terminar de leerlas termina la MT en $q_4$, luego, al leer las $b$, para que la cadena sea reconocida, esta subcadena de $b$ debe terminar en $q_6$, lo cual solo es posible si la longitud de $b$ es par.
 - Supongamos que la cantida de $a$ es impar $\implies$ dicha subcadena termina en $q_1$, y al comenzar a leer las $b$ pasaría la MT a los estados $q_2,q_3$, de los cuales hay salida $\iff$ la cantidad de $b$ es impar.
 
@@ -28,6 +29,3 @@ Procedamos por inducción, tomemos como casos base las cadenas $ab$ y $aabb$, su
 ## Ejercicio 3
 
 > \* Construya una maquina de turing que reconozca $1^{n}$ con $n$ primo
-
-*******111111111111******
-****111&xxxx11111111***

@@ -16,16 +16,14 @@ La primera observación a hacer es que, en el camino más largo, los vértices e
 
 Supongamos que el camino más largo tiene tamaño $\lt k$, por lo ya demostrado, los vértices extremos no son adyacentes, sin embargo, todos sus adyacentes están en el camino, porque de lo contrario, habría un camino más largo al hacer un análisis análogo al anterior. Nótese que como $deg(u)+deg(v) \ge k$ siendo $u,v$ los vértices extremos de ese camino, existen dos vértices internos $p_i,p_{i+1}$ en ese orden, tales que $p_i$ es adyacente a $v$ y el otro con $u$. Por tanto, existe un ciclo y análogo a lo ya dicho con un vértice exterior al ciclo, existiría un camino más largo
 
-
 ## Problema 3
 
 Hay que demostrar que para cualquier par de vértices existe un ciclo simple que los contenga $\iff$ no existe punto de articulación.
 
-Supongamos que no existe punto de articulación, por tanto, para todo par de vértices existen dos camino entre ellos $\implies$ existe un ciclo entre ellos.
+Supongamos que no existe punto de articulación y que existe un par de vértices tal que no pertenecen a ningún ciclo simple, luego, como el grafo es conexo, existe un camino entre dicho par de vértices 
 
 Supongamos que para cualquier par de vértices existe un ciclo simple que los contiene y que existe al menos un punto de articulación, al eliminarlo se generan al menos dos componentes conexas, sea $u$ y $v$ vértices en distintas componentes conexas, como entre ellos había un ciclo, al eliminar un vértice en un camino entre ellos $\implies$ existe un camino entre ellos, contradición.
 
 ## Problema 4
 
 Si $G$ es libre de triángulos $\implies w(G) \le 2$ y sabemos que $w(G) \le \mathcal{X}(G) = k$. Por tanto, basta analizar el caso $k=1$, el cual cumple la condición.
-
