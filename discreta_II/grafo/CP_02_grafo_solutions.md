@@ -47,6 +47,14 @@ Para cada vértice en cualquiera de los dos conjuntos entre todos los $k$ empare
 
 > Sea $G$ de orden $n$ (par), tal que para todos $v,w$ no adyacentes $d(v)+d(w)\geq n-1$. Pruebe que existe un emparejamiento perfecto en $G$.
 
+### `Vía 1`
+
+Como se cumple que para todos $v,w$ no adyacentes $d(v)+d(w)\geq n-1$ entonces el grafo es conexo.
+
+Tomemos el camino más largo $P=\{v_1,v_2,\ldots,v_k\}$, supongamos que $v_1,v_k$ son adyacentes, entonces $P$ es un ciclo. Si $v_1,v_k$ no son adyacentes se cumple que $d(v_1)+d(v_k)\geq n-1$, por tanto, haciendo un razonamiento análogo al del **Problema 15** se cumple que existe un ciclo. Como $P$ es un ciclo, supongamos que existe un vértice en el grafo que no pertenece a este, luego, como es conexo el grafo, algún nodo del ciclo debe estar conectado a ese vértice, por lo que, podríamos seleccionar un camino $P'$ más largo que $P$, contradicción $\implies$ el grafo es hamiltoniano, y como tiene una cantidad par de vértices implica que tiene una cantidad par de aristas en el ciclo, por tanto, existe un emparejamiento que abarca todos los vértices.
+
+### `Vía 2`
+
 Sea $M$ un emparejamiento máximo y supongamos que no es perfecto. Como $n$ es par significa que existen una cantidad par de nodos que no forman parte de $M$.
 
 Sean $u$ y $v$ dos de los vértices no emparejados, sabemos que $d(v)+d(w)\geq n-1$, por tanto o son adyacentes o tienen al menos un vértice en común entre sus adyacentes. Si son adyacentes podemos emparejarlos y obtendríamos un emparejamiento mayor que el emparejamiento máximo, contradicción. Supongamos ahora que tienen al menos un vértice $p$ en común entre sus adyacentes y sabemos que ningún par de vértices no emparejados son adyacentes, porque se podrían emparejar y existiría un emparejamiento mayor que el máximo.

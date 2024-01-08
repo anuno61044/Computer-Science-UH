@@ -6,6 +6,8 @@ Primeramente hay que modelar el problema a un grafo y reducirlo a emparejamiento
 
 Sea $G$ un grafo formado por aristas $e$ tal que $e \in m$ o $e \in m'$, pero no a ambos. En $G$ se cumple que cada componente conexa es o un camino o un ciclo, y que las aristas se alternan entre $m$ y $m'$ debido a que ambos son emparejamientos.
 
+Demostremos que no pueden existir caminos con solo una arista. Supongamos que existe un camino de una arista $e$(supongamos sin pérdida de generalidad que dicha arista pertenece a $m$), luego, las aristas adyacentes en el grafo original no pueden pertenecer a $m$ porque $e$ pertenece a $m$, pero esas aristas tampoco pueden pertenecer a $m'$ porque como no pertenecen a $G$ entonces también pertenecen a $m$, lo cual genera una contradicción por lo visto anteriormente.
+
 Ver que la menor distribución para las aristas de $m'$ es que cada una esté en un camino de 3 aristas, y junto a esta dos aristas de $m$, por lo que en ese caso $|m'| = \frac{|m|}{2}$.
 
 Dicha distribución se puede mejorar tomando uno de esos caminos y cambiar las aristas de los bordes por aristas de $m'$ y eliminando la del medio, lo cual provocaría que $|m'| \gt \frac{|m|}{2}$.
@@ -20,10 +22,10 @@ Supongamos que el camino más largo tiene tamaño $\lt k$, por lo ya demostrado,
 
 Hay que demostrar que para cualquier par de vértices existe un ciclo simple que los contenga $\iff$ no existe punto de articulación.
 
-Supongamos que no existe punto de articulación y que existe un par de vértices tal que no pertenecen a ningún ciclo simple, luego, como el grafo es conexo, existe un camino entre dicho par de vértices 
+Supongamos que no existe punto de articulación y que existe un par de vértices tal que no pertenecen a ningún ciclo simple, luego, como el grafo es conexo, existe un camino entre dicho par de vértices
 
 Supongamos que para cualquier par de vértices existe un ciclo simple que los contiene y que existe al menos un punto de articulación, al eliminarlo se generan al menos dos componentes conexas, sea $u$ y $v$ vértices en distintas componentes conexas, como entre ellos había un ciclo, al eliminar un vértice en un camino entre ellos $\implies$ existe un camino entre ellos, contradición.
 
 ## Problema 4
 
-Si $G$ es libre de triángulos $\implies w(G) \le 2$ y sabemos que $w(G) \le \mathcal{X}(G) = k$. Por tanto, basta analizar el caso $k=1$, el cual cumple la condición.
+Teorema de conferencia de Coloreo
