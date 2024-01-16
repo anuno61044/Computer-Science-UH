@@ -16,15 +16,24 @@ Dicha distribución se puede mejorar tomando uno de esos caminos y cambiar las a
 
 La primera observación a hacer es que, en el camino más largo, los vértices extremos no pueden ser adyacentes, ya que escogeríamos un vértice exterior adyacente a alguno del ciclo y se formaría un camino más largo. Esto ocurre siempre y cuando el grafo no sea $C_n$, en cuyo caso, como $k\lt n$ basta tomar un camino simple de $k$ vértices del ciclo.
 
-Supongamos que el camino más largo tiene tamaño $\lt k$, por lo ya demostrado, los vértices extremos no son adyacentes, sin embargo, todos sus adyacentes están en el camino, porque de lo contrario, habría un camino más largo al hacer un análisis análogo al anterior. Nótese que como $deg(u)+deg(v) \ge k$ siendo $u,v$ los vértices extremos de ese camino, existen dos vértices internos $p_i,p_{i+1}$ en ese orden, tales que $p_i$ es adyacente a $v$ y el otro con $u$. Por tanto, existe un ciclo y análogo a lo ya dicho con un vértice exterior al ciclo, existiría un camino más largo
+Supongamos que el camino más largo $P=\{u=v_1,v_2,\ldots,v_{k'}\}$ es tal que $|P| \lt k \implies$ tiene menos de $k$ aristas $\implies$ tiene menos de $k+1$ vértices, por lo ya demostrado, los vértices extremos no son adyacentes, sin embargo, todos sus adyacentes están en el camino, porque de lo contrario, habría un camino más largo al hacer un análisis análogo al anterior. Tenemos una cantidad $k'\le k$ vértices en el camino, y supongamos que $deg(v)=t$, entonces $s+t\ge k$.
+
+Supongamos que no se cumple que existen en el camino dos vértices $v_i,v_{i+1}$ tal que las aristas $(u,v_{i+1})$ y $(v_i,v)$ están en el grafo, entonces, si $deg(u)=s$ se cumple que ninguno de los vértices que anteceden en el camino $P$ a esos $s$ vértices adyacentes a $u$ deben estar adyacentes a $v$, por tanto, hay en total $k'-1-s$ vértices válidos para ser adyacente a $u$, sin embargo $deg(v) \ge k-s \ge k'-s$, por tanto, $v$ debe ser adyacente a al menos un vértice de los anteriores a los vértices que son adyacentes a $u$.
+
+Luego, $P$ constituye un ciclo, y debe tener a al menos un vértice adyacente a uno externo al camino, lo cual constituye una contradicción porque tomamos el camino más largo.
+
 
 ## Problema 3
 
 Hay que demostrar que para cualquier par de vértices existe un ciclo simple que los contenga $\iff$ no existe punto de articulación.
 
-Supongamos que no existe punto de articulación y que existe un par de vértices tal que no pertenecen a ningún ciclo simple, luego, como el grafo es conexo, existe un camino entre dicho par de vértices
+Probemos que dado un grafo biconexo $\implies$ para cualquier par de vértices existe un ciclo simple que los contiene. Procedamos por inducción la distancia mínima entre los vértices.
 
-Supongamos que para cualquier par de vértices existe un ciclo simple que los contiene y que existe al menos un punto de articulación, al eliminarlo se generan al menos dos componentes conexas, sea $u$ y $v$ vértices en distintas componentes conexas, como entre ellos había un ciclo, al eliminar un vértice en un camino entre ellos $\implies$ existe un camino entre ellos, contradición.
+- Caso base: para todo par de vértices a distancia 1 (o sea que sean adyacentes) se cumple que debe existir otro camino que los una, porque de lo contrario la arista sería arista puente, lo cual no puede ser porque el grafo es biconexo.
+- Hipótesis: supongamos que para todo par de vértices a distancia $k$ se cumple que existen dos caminos disjuntos en vértices que los une, y por tanto existe un ciclo simple.
+- Tesis: sean $u,v$ dos vértices a distancia $k+1$, y $w$ el vértice adyacente a $v$ en el camino de longitud $k+1$ de $u$ a $v$. Como $u,w$ están a distancia $k \implies$ existen dos caminos $P,Q$ disjuntos en vértices que van de $u$ a $w$. Sea $R$ un camino de $u$ a $v$ que no pasa por el vértice $w$, y dicho camino existe porque de lo contrario $w$ sería punto de articulación y el grafo no sería biconexo. Sea $x$ el último vértice común de $R$ con $P$ o $Q$, y supongamos sin pérdida de generalidad que $x \in P$, entonces el camino de $u-x$ por $P$ unido a $x-v$ por $R$ es disjunto en vértices al camino $Q$ unido a $w-v$, por tanto existe un ciclo simple que contiene a $u,v$.
+
+Demostremos que si existe un ciclo simple entre cualesquiera dos vértices entonces el grafo es biconexo. Supongamos que existe al menos un punto de articulación, al eliminarlo se generan al menos dos componentes conexas, sea $u$ y $v$ vértices en distintas componentes conexas, como entre ellos había un ciclo, al eliminar un vértice en un camino entre ellos $\implies$ existe un camino entre ellos, contradición.
 
 ## Problema 4
 

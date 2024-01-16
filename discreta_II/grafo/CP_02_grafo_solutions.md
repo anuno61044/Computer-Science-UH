@@ -144,7 +144,7 @@ Si $G$ es hamiltoniano, al agregar una arista seguirá siendo hamiltoniano.
 
 Supongamos que $G + (u,v)$ es hamiltoneano, por tanto existe un ciclo de hamilton, y al eliminar la arista $(u,v)$ se cumple que existe un camino de hamilton $P=\{u=v_1,v_2,\ldots,v_n=v\}$.
 
-Como $deg(u) + deg(v) \ge n$ y la arista $(u,v)$ no existe $\implies$ $u,v$ tienen en $P$ dos vértices en común y se cumple que existen $v_{i-1},v_i$ tal que las aristas $(u,v_i)$ y $(v_{i-1},v)$ existen en el grafo. Supongamos que esto último no ocurre, pero sabemos que $u,v$ tienen en $P$ dos vértices en común, sea $v_s$ uno de ellos, para que no se cumple lo anterior debe ocurrir que los vértices en el camino después de $v_s$ no son adyacentes a $u$ y los anteriores a este no adyacentes a $v$, pero esto no ocurre porque $u,v$ tienen al menos otro vértices en común.
+Como $deg(u) + deg(v) \ge n$ y la arista $(u,v)$ no existe $\implies$ $u,v$ tienen en $P$ dos vértices en común y se cumple que existen $v_{i-1},v_i$ tal que las aristas $(u,v_i)$ y $(v_{i-1},v)$ existen en el grafo. (demostrado intra 2do 2023).
 
 Por tanto, al eliminar la arista $(u,v)$ existe un ciclo en el grafo y es $\{v_1, v_i, \ldots, v_n, v_{i-1}, \ldots, v_2\}$.
 
@@ -164,7 +164,7 @@ Si $G$ es hamiltoniano, al agregar una arista seguirá siendo hamiltoniano.
 
 Supongamos que $G + (u,v)$ es hamiltoneano, por tanto existe un ciclo de hamilton, y al eliminar la arista $(u,v)$ se cumple que existe un camino de hamilton $P=\{u=u_1, v_1, u_2, v_2, \ldots,u_n, v_n=v\}$.
 
-Como $d(u)+d(u)\gt n$ significa que existe $i$ tal que las aristas $(u_i,v)$ y $(u,v_{i+1})$ existen en el grafo. Para demostrar esto tomemos los vértices en el orden de $P$ por parejas $\implies$ son $n-2$ parejas, quitando la primera y la última que es donde se encuentran $u$ y $v$, luego, entre dichos vértices deben seleccionar más de $n-2$ para ser adyacentes a un vértice, luego, por Principio del Palomar se cumple que en una pareja deben existir vértices adyancentes, y por la forma de escoger las parejas se cumple lo que queríamos demostrar. Por último, como las aristas $(u_i,v)$ y $(u,v_{i+1})$ existen en el grafo, teniendo en cuenta el orden de los vértices en $P$ obtenemos el ciclo.
+Como $d(u)+d(u)\gt n$ significa que existe $i$ tal que las aristas $(u_i,v)$ y $(u,v_{i+1})$ existen en el grafo. Para demostrar esto tomemos los vértices en el orden de $P$ por parejas $\implies$ son $\frac{n-2}{2}$ parejas, quitando la primera y la última que es donde se encuentran $u$ y $v$, luego, entre dichos vértices deben seleccionar más de $n-2$ para ser adyacentes a un vértice, luego, por Principio del Palomar se cumple que en una pareja deben existir vértices adyancentes, y por la forma de escoger las parejas se cumple lo que queríamos demostrar. Por último, como las aristas $(u_i,v)$ y $(u,v_{i+1})$ existen en el grafo, teniendo en cuenta el orden de los vértices en $P$ obtenemos el ciclo.
 
 $$
 \cdots
